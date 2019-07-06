@@ -21,7 +21,10 @@ axios.interceptors.request.use(function (config) {
 });
 //登录
 function login(params){
-    return axios.post("/auth-service/login", params);
+    return axios.post("/web-service/query", params);
+}
+function findByphone(params){
+    return axios.post("/web-service/findByphone",params);
 }
 //用于编写ajax（更加利于路径管理）
 //注册
