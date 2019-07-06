@@ -78,6 +78,16 @@ function addToCart(params){
     return axios.post("/web-service/addToCart",params);
 }
 
+//根据手机获取用户信息
+function getUserByPhone(params){
+    return axios.post("/web-service/getUserByPhone",params);
+}
+
+//修改用户基本信息
+function changeUserInfo(params) {
+    return axios.post("/web-service/changeUserInfo",params);
+}
+
 // //商品分类
 // function getCategorys(){
 //     return axios.get("/web-service/categorys");

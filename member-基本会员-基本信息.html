@@ -44,7 +44,8 @@
                     <a class="tx" href="javascript:;"><img src="images/top-icon03.png" alt=""/></a>
                     <span>|</span>
                 </div>
-                <a class="version" href="javascript:;">English</a></div>
+                <a class="version" href="javascript:;">English</a>
+            </div>
         </div>
     </div>
     <!--网站头部-->
@@ -411,16 +412,16 @@
                         <div class="member-con">
                             <div class="controls">
                                 <p><span>*</span>用户名：</p>
-                                <div class="basic-name">test6288</div>
+                                <div class="basic-name" >{{user.username}}</div>
                             </div>
                             <div class="controls">
                                 <p>昵称：</p>
-                                <input type="text" class="input03 w250">
+                                <input type="text" class="input03 w250" v-model="user.nickname">
                             </div>
                             <div class="controls">
                                 <p>头像：</p>
                                 <div class="upload-controls">
-                                    <div class="upload-img head-img"><img src="images/upload-img01.png" alt=""></div>
+                                    <div class="upload-img head-img"><img :src="user.image" alt=""></div>
                                     <input type="button" value="点击上传" class="upload-btn w100">
                                 </div>
                                 <div class="tip">
@@ -430,16 +431,16 @@
                             </div>
                             <div class="controls">
                                 <p>手机号：</p>
-                                <div class="basic-tel">18911111111</div>
+                                <div class="basic-tel">user.phone</div>
                                 <a class="change-tel" href="javascript:;">更改手机</a>
                             </div>
                             <div class="controls">
                                 <p>邮箱：</p>
-                                <input type="text" class="input03 w250">
+                                <input type="text" class="input03 w250" v-model="user.email">
                             </div>
                             <div class="controls">
                                 <p>地区：</p>
-                                <select class="selectpicker" data-width="252">
+                                <select class="selectpicker" data-width="252" v-model="user.cityid">
                                     <option value="0">请选择</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -448,9 +449,9 @@
                             </div>
                             <div class="controls">
                                 <p>详细地址：</p>
-                                <input type="text" class="input03 w450">
+                                <input type="text" class="input03 w450" v-model="user.address">
                             </div>
-                            <input type="submit" value="保存" class="btn01 submit">
+                            <input type="submit" value="保存" @click="changeUserInfo" class="btn01 submit">
                         </div>
                     </div>
                     <!-- 银行账户信息 -->
@@ -557,6 +558,57 @@
 
 <script>
     new Vue({
-        el: "#app"
+        el: "#app",
+        data:{
+            user: {
+                username: "",
+                nickname: "",
+                image: "",
+                phone: "",
+                email: "",
+                cityid: "",
+                address: ""
+            }
+        },
+        created: function(){
+            this.user.phone = localStorage.getItem("phone")
+            this.getUserByPhone(this.user);
+        },
+        methods: {
+            changeUserInfo:function () {
+                changeUserInfo(this.user).then(res => {
+                    var d = res.data.data;
+                    console(d)
+                    this.user = d.data
+                    console.log(d)
+                    if (d.errno == 0) {
+                        localStorage.setItem("phone", this.user.phone)
+                        localStorage.setItem("username", this.user.username)
+                        localStorage.removeItem("cart")
+                        let returnURL = sessionStorage.getItem("returnURL")
+                    } else {
+                        alert("修改失败")
+                    }
+                })
+            },
+            getUserByPhone:function (user) {
+                getUserByPhone(user).then(res => {
+                    var d = res.data.data;
+                    console(d)
+                    this.user = d.data
+                    console.log(d)
+                    if (d.errno == 0) {
+                        localStorage.setItem("phone", this.user.phone)
+                        localStorage.setItem("username", this.user.username)
+                        if (this.user.nickname != null){
+                            localStorage.setItem('nickname',this.user.nickname)
+                        }
+                    } else {
+                        alert("修改失败")
+                    }
+                })
+            }
+        }
+
     })
 </script>
