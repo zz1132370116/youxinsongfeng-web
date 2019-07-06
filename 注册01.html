@@ -210,26 +210,26 @@
                 <form action="">
                     <div class="controls">
                         <p>用户名：</p>
-                        <input type="text" class="input03 w450">
+                        <input type="text" class="input03 w450" v-model="user.username">
                     </div>
                     <div class="controls">
                         <p>密码：</p>
-                        <input type="text" class="input03 w450">
+                        <input type="text" class="input03 w450" v-model="user.password">
                     </div>
                     <div class="controls">
                         <p>确认密码：</p>
-                        <input type="text" class="input03 w450">
+                        <input type="text" class="input03 w450" v-model="user.password2">
                     </div>
                      <div class="controls">
                         <p>手机号：</p>
-                        <input type="text" class="input03 w450">
+                        <input type="text" class="input03 w450" v-model="user.phone">
                     </div>
                     <div class="controls">
-                        <input type="button" value="获取验证码" class="btn06 w450">
+                        <input type="button" value="获取验证码" class="btn06 w450"  @click="sendSms" v-model="codeMsg" :disabled='disabled'>
                     </div>
                     <div class="controls">
                         <p>验证码：</p>
-                        <input type="text" class="input03 w450">
+                        <input type="text" class="input03 w450" v-model="user.code">
                     </div>
                     <div class="controls">
                      
@@ -484,3 +484,88 @@
 <script src="js/axios-0.18.0.js"></script>
 <script src="components/top.js"></script>
 <script src="js/api.1.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            user:{
+                username:"",
+                password:"",
+                phone:"",
+                password2:"",
+                code:"",
+
+            },
+          
+		disabled:false,
+		
+        // 倒计时秒数
+           time:60,
+         // 按钮上的文字
+           codeMsg: '获取验证码',
+       // 定时器
+             timer: null
+        },
+        methods: {
+            sendSms: function () {
+				   sms(this.user.phone).then(res=>{
+					   var d =res.data.data;
+					   if(d.errno==0){
+                           alert("发送成功,请注意查收")
+						   //成功
+						   //按钮不可以
+						   this.disabled=true
+						   //倒计时
+						 // 验证码60秒倒计时
+					if (!this.timer) {
+   						this.timer = setInterval(() => {
+   						if (this.time > 0 && this.time <= 60) {
+    						this.time--;
+    							if (this.time !== 1) {
+   									this.codeMsg = "重新发送(" + this.time + ")秒";
+   										} else {
+											clearInterval(this.timer);
+											//重置按钮内容
+											this.codeMsg = "获取验证码";
+											//重置倒计时
+											this.time = 60;
+											//重置定时器
+											this.timer = null;
+											//恢复按钮状态
+    										this.disabled = false;
+    	}
+   	}
+	   }, 1000)
+	}
+	   
+					   }else{
+						   //失败
+						   alert(d.errmsg)
+					   }
+				   })
+        },
+        register:function(){
+            if(this.user.password !=null && this.user.password2 == this.user.password &&this.user.username!=null &&this.user.phone !=null){
+                regist(this.user).then(res=>{
+				var d =res.data.data;
+				if(d.errno==0){
+					alert(d.errmsg)
+					location.href="login.html"
+				}else{
+					alert("登录失败")
+				}
+			})
+            }else{
+                alert("输入有误,请重新输入")
+                
+            }
+		
+		},
+        
+        },
+        
+    })
+
+
+
+</script>
