@@ -418,49 +418,57 @@
                                 <p>昵称：</p>
                                 <input type="text" class="input03 w250" v-model="user.nickname">
                             </div>
-                            <div class="controls">
-                                <p>头像：</p>
-                                <div class="upload-controls">
-                                    <div class="upload-img head-img"><img :src="user.image" alt=""></div>
-                                    <input type="button" value="点击上传" class="upload-btn w100">
-                                </div>
-                                <div class="tip">
-                                    <em>1、上传文件要求为清晰照片；尺寸为正方形</em>
-                                    <em>2、照片要求格式为jpg、jpeg、gif或png，大小不要超过3M。</em>
-                                </div>
-                            </div>
+                          
                             <div class="controls">
                                 <p>手机号：</p>
-                                <div class="basic-tel">user.phone</div>
+                                <div class="basic-tel">{{user.phone}}</div>
                                 <a class="change-tel" href="javascript:;">更改手机</a>
                             </div>
                             <div class="controls">
                                 <p>邮箱：</p>
                                 <input type="text" class="input03 w250" v-model="user.email">
                             </div>
-                            <div class="controls">
-                                <p>地区：</p>
-                                <select class="selectpicker" data-width="252" v-model="user.cityid">
-                                    <option value="0">请选择</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
+                         
                             <div class="controls">
                                 <p>详细地址：</p>
-                                <input type="text" class="input03 w450" v-model="user.address">
+                               
+                                <div id="r-result"><input type="text" id="suggestId" size="20" value="百度" style="width:200px;height:50px" v-model="user.address" />
+                                    <input type="submit" value="保存" @click="changeUserInfo" class="btn01 submit">
+                                </div>
+                                
                             </div>
-                            <input type="submit" value="保存" @click="changeUserInfo" class="btn01 submit">
+                            <div class="controls">
+                                 
+                                </div>
+                                <div class="controls">
+                                     
+                                    </div>
+                                    <div class="controls">
+                                         
+                                            
+                                        </div>
+                                        <div class="controls">
+                                             
+                                            </div>
+                                            <div class="controls">
+                                             
+                                                </div>
+                                                <div class="controls">
+                                             
+                                                    </div>
+                                                    <div class="controls">
+                                             
+                                                        </div>
+                           
                         </div>
                     </div>
                     <!-- 银行账户信息 -->
-                    <div class="member-column">
+                    <div class="controls">
                         <div class="member-tit">
-                            <p>银行账户信息</p>
-                            <a href="javascript:;">为什么需要填正确的银行帐号信息？​</a>
+                            <p>账户信息</p>
+                           
                         </div>
-                        <div class="member-con">
+                        <div class="controls">
                             <form action="#" class="member-form">
                                 <div class="controls">
                                     <p>户名：</p>
@@ -571,14 +579,15 @@
             }
         },
         created: function(){
-            this.user.phone = localStorage.getItem("phone")
+            this.user.phone = localStorage.getItem("phone");
+            this.user.username = localStorage.getItem("username")
             this.getUserByPhone(this.user);
         },
         methods: {
             changeUserInfo:function () {
                 changeUserInfo(this.user).then(res => {
                     var d = res.data.data;
-                    console(d)
+
                     this.user = d.data
                     console.log(d)
                     if (d.errno == 0) {
@@ -611,4 +620,15 @@
         }
 
     })
+</script>
+
+<script type="text/javascript" 
+			src="http://api.map.baidu.com/api?v=2.0&ak=4IU3oIAMpZhfWZsMu7xzqBBAf6vMHcoa">
+		</script>
+<script type="text/javascript">
+
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+        {"input" : "suggestId"
+            });
+
 </script>
