@@ -88,6 +88,11 @@ function changeUserInfo(params) {
     return axios.post("/web-service/changeUserInfo",params);
 }
 
+//上传头像
+function uploadImage(params,config) {
+    return axios.post("/web-service/uploadImage",params,config);
+}
+
 // //商品分类
 // function getCategorys(){
 //     return axios.get("/web-service/categorys");

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/select.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
+
     <!--[if lt IE 10]>
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
@@ -421,8 +422,10 @@
                             <div class="controls">
                                 <p>头像：</p>
                                 <div class="upload-controls">
-                                    <div class="upload-img head-img"><img :src="user.image" alt=""></div>
-                                    <input type="button" value="点击上传" class="upload-btn w100">
+                                    <div class="upload-controls">
+                                        <div class="upload-img head-img"><img :src="user.image" alt=""></div>
+                                        <input type="file" @change="uploadImage($event)" value="点击上传" class="w100" accept="image/gif,image/jpeg,image/jpg,image/png">
+                                    </div>
                                 </div>
                                 <div class="tip">
                                     <em>1、上传文件要求为清晰照片；尺寸为正方形</em>
@@ -431,7 +434,7 @@
                             </div>
                             <div class="controls">
                                 <p>手机号：</p>
-                                <div class="basic-tel">user.phone</div>
+                                <div class="basic-tel">{{user.phone}}</div>
                                 <a class="change-tel" href="javascript:;">更改手机</a>
                             </div>
                             <div class="controls">
@@ -561,9 +564,10 @@
         el: "#app",
         data:{
             user: {
+                userId: 0,
                 username: "",
                 nickname: "",
-                image: "",
+                image: "1.jpg",
                 phone: "",
                 email: "",
                 cityid: "",
@@ -575,6 +579,45 @@
             this.getUserByPhone(this.user);
         },
         methods: {
+            uploadImage:function(e){
+                //上传图片
+                var _this = this;
+                console.log(e)
+                var file = e.target.files[0];
+
+                // 创建form对象
+                var formdata=new FormData();
+                // 通过append向form对象添加数据,可以通过append继续添加数据
+                formdata.append('file',file,file.name);
+                let config = {
+                    headers:{'Content-Type':'multipart/form-data'}
+                };  //添加请求头
+                console.log("uploadImage")
+                uploadImage(formdata,config).then(res => {
+                    var d = res.data.data;
+                    var img = "/headicon/201907081037505034.jpg"
+                    _this.user.image = d.image;
+
+                });
+                // axios.post('/xapi/upimage',formdata,config).then(response =>{   //这里的/xapi/upimage为接口
+                //     console.log(response.data);
+                //
+                // });
+                //var image = _this.getObjectURL(file);
+                //_this.user.image = image;
+            },
+            getObjectURL:function (file) {
+                //获取图片url
+                var url = null ;
+                if (window.createObjectURL!=undefined) { // basic
+                    url = window.createObjectURL(file) ;
+                } else if (window.URL!=undefined) { // mozilla(firefox)
+                    url = window.URL.createObjectURL(file) ;
+                } else if (window.webkitURL!=undefined) { // webkit or chrome
+                    url = window.webkitURL.createObjectURL(file) ;
+                }
+                return url ;
+            },
             changeUserInfo:function () {
                 changeUserInfo(this.user).then(res => {
                     var d = res.data.data;
@@ -584,17 +627,17 @@
                     if (d.errno == 0) {
                         localStorage.setItem("phone", this.user.phone)
                         localStorage.setItem("username", this.user.username)
-                        localStorage.removeItem("cart")
-                        let returnURL = sessionStorage.getItem("returnURL")
+                        localStorage.setItem("nickname", this.user.nickname)
                     } else {
                         alert("修改失败")
                     }
                 })
             },
             getUserByPhone:function (user) {
+                //根据手机获取用户信息
                 getUserByPhone(user).then(res => {
                     var d = res.data.data;
-                    console(d)
+                    console.log(d)
                     this.user = d.data
                     console.log(d)
                     if (d.errno == 0) {
