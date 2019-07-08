@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="css/select.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
+    <style>
+        .errorMsg{
+            color: red;
+        }
+    </style>
     <!--[if lt IE 10]>
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
@@ -50,7 +55,7 @@
     <!--网站头部-->
     <header>
         <div class="container">
-            <a href="javascript:;" class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/logo.png" alt=""/>
             </a>
             <div class="search">
@@ -337,14 +342,14 @@
                         </li>
                     </ul>
                 </dt>
-                <dd><a class="selected" href="javascript:;">首页</a></dd>
-                <dd><a href="javascript:;">资源</a></dd>
-                <dd><a href="javascript:;">采购</a></dd>
-                <dd><a href="javascript:;">搜索</a></dd>
-                <dd><a href="javascript:;">物流</a></dd>
-                <dd><a href="javascript:;">行情</a></dd>
-                <dd><a href="javascript:;">积分商城</a></dd>
-                <dd><a href="javascript:;">会员俱乐部</a></dd>
+                <dd><a class="selected" href="index.html">首页</a></dd>
+                <dd><a href="资源.html">资源</a></dd>
+                <dd><a href="采购.html">采购</a></dd>
+                <dd><a href="搜索.html">搜索</a></dd>
+                <dd><a href="物流.html">物流</a></dd>
+                <dd><a href="行情-实时成交价.html">行情</a></dd>
+                <dd><a href="积分商城.html">积分商城</a></dd>
+                <dd><a href="member-会员俱乐部.html">会员俱乐部</a></dd>
             </dl>
         </div>
     </nav>
@@ -353,44 +358,45 @@
         <div class="container">
             <!-- 面包屑导航 -->
             <div class="bread-crumbs">
-                <a href="javascript:;">首页</a>
+                <a href="index.html">首页</a>
                 <span><i class="fa fa-angle-double-right"></i></span>
-                <a href="javascript:;">会员中心</a>
+                <a href="member-基本会员-基本信息.html">会员中心</a>
                 <span><i class="fa fa-angle-double-right"></i></span>
-                <a href="javascript:;" class="selected">账户安全</a>
+                <a href="/" class="selected">账户安全</a>
             </div>
             <!-- 会员左侧 -->
             <div class="member-left">
                 <dl>
                     <dt>会员中心</dt>
-                    <dd><a href="javascript:;" class="menuPro-first selected">基本信息</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的收藏</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的关注</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">账户安全</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的积分</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的站内信<span style="color:#b0e78e;">(8)</span></a>
+                    <dd><a href="member-基本会员-基本信息.html" class="menuPro-first">基本信息</a></dd>
+                    <dd><a href="member-基本会员-我的收藏.html" class="menuPro-first">我的收藏</a></dd>
+                    <dd><a href="member-基本会员-我的关注.html" class="menuPro-first">我的关注</a></dd>
+                    <dd><a href="member-基本会员-账户安全.html" class="menuPro-first selected">账户安全</a></dd>
+                    <dd><a href="member-基本会员-我的积分.html" class="menuPro-first">我的积分</a></dd>
+                    <dd><a href="member-基本会员-我的站内信.html" class="menuPro-first">我的站内信<span
+                            style="color:#b0e78e;">(8)</span></a>
                     </dd>
-                    <dd><a href="javascript:;" class="menuPro-first">升级会员</a></dd>
+                    <dd><a href="member-升级会员.html" class="menuPro-first">升级会员</a></dd>
                     <dt>供应商管理</dt>
-                    <dd><a href="javascript:;" class="menuPro-first">我的资源单</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我参与的竞标</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我收到的订单</a></dd>
+                    <dd><a href="member-供应商管理-我的资源单.html" class="menuPro-first">我的资源单</a></dd>
+                    <dd><a href="member-供应商管理-我参与的竞价.html" class="menuPro-first">我参与的竞标</a></dd>
+                    <dd><a href="member-供应商管理-我收到的订单.html" class="menuPro-first">我收到的订单</a></dd>
                     <dt>采购管理</dt>
-                    <dd><a href="javascript:;" class="menuPro-first">我的采购单</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的订单</a></dd>
+                    <dd><a href="member-采购管理-我的采购单.html" class="menuPro-first">我的采购单</a></dd>
+                    <dd><a href="member-采购管理-我的订单.html" class="menuPro-first">我的订单</a></dd>
                     <dt>托运管理</dt>
                     <dd><a href="javascript:;" class="menuPro-first">我要找车</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的托运信息</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的托运单</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">使用过的托运商</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">关注的承运商</a></dd>
+                    <dd><a href="member-托运管理-我的托运信息.html" class="menuPro-first">我的托运信息</a></dd>
+                    <dd><a href="member-托运管理-我的托运单.html" class="menuPro-first">我的托运单</a></dd>
+                    <dd><a href="member-托运管理-我的托运单-使用过的承运商.html" class="menuPro-first">使用过的托运商</a></dd>
+                    <dd><a href="member-托运管理-我的托运单-关注的承运商.html" class="menuPro-first">关注的承运商</a></dd>
                     <dt>承运管理</dt>
-                    <dd><a href="javascript:;" class="menuPro-first">我的车辆</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的路线</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">承运简介</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的网点</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我参与的竞价</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">我的承运单</a></dd>
+                    <dd><a href="member-承运管理-我的车辆.html" class="menuPro-first">我的车辆</a></dd>
+                    <dd><a href="member-承运管理-我的路线.html" class="menuPro-first">我的路线</a></dd>
+                    <dd><a href="member-承运管理-承运简介.html" class="menuPro-first">承运简介</a></dd>
+                    <dd><a href="member-承运管理-我的网点.html" class="menuPro-first">我的网点</a></dd>
+                    <dd><a href="member-承运管理-我参与的竞价.html" class="menuPro-first">我参与的竞价</a></dd>
+                    <dd><a href="member-承运管理-我的承运单.html" class="menuPro-first">我的承运单</a></dd>
                 </dl>
             </div>
             <!-- 会员右侧 -->
@@ -400,21 +406,22 @@
                     <div class="member-tit"><p>账户安全</p></div>
                     <div class="member-con">
                         <div class="controls">
-                            <div class="bound-tel">当前绑定手机：<span>18911111111</span></div>
-                            <input type="button" value="获取验证码" class="btn06 w125">
+                            <div class="bound-tel">当前绑定手机：<span>{{user.phone}}</span></div>
+                            <input type="button" value="获取验证码" @click="sendSms" v-model="codeMsg" class="btn06 w125">
                         </div>
                         <div class="controls">
                             <p>验证码：<span>*</span></p>
-                            <input type="text" class="input03 w250">
+                            <input type="text" class="input03 w250" v-model="user.code" required="required">
                         </div>
                         <div class="controls">
                             <p>新密码：<span>*</span></p>
-                            <input type="text" class="input03 w250">
+                            <input type="text" v-model="user.password" class="input03 w250" required="required">
                         </div>
                         <div class="controls">
                             <p>确认新密码：</p>
-                            <input type="text" class="input03 w250">
+                            <input type="text" v-model="password2" class="input03 w250" required="required">
                         </div>
+                        <div class="controls errorMsg" id="passWordErrorMsg" hidden="hidden">密码和确认密码不一样！</div>
                         <input type="submit" value="修改密码" class="btn01 submit">
                     </div>
                 </div>
@@ -488,6 +495,81 @@
 
 <script>
     new Vue({
-        el: "#app"
+        el: "#app",
+        data: {
+            user: {
+                password: "",
+                phone: localStorage.getItem("phone"),
+
+                code: ""
+            },
+            password2: "",
+            disabled: false,
+
+            // 倒计时秒数
+            time: 60,
+            // 按钮上的文字
+            codeMsg: '获取验证码',
+            // 定时器
+            timer: null
+        },
+        methods: {
+            sendSms: function () {
+                sms(this.user.phone).then(res => {
+                    var d = res.data.data;
+                    if (d.errno == 0) {
+                        alert("发送成功,请注意查收")
+                        //成功
+                        //按钮不可以
+                        this.disabled = true
+                        //倒计时
+                        // 验证码60秒倒计时
+                        if (!this.timer) {
+                            this.timer = setInterval(() => {
+                                if (this.time > 0 && this.time <= 60) {
+                                    this.time--;
+                                    if (this.time !== 1) {
+                                        this.codeMsg = "重新发送(" + this.time + ")秒";
+                                    } else {
+                                        clearInterval(this.timer);
+                                        //重置按钮内容
+                                        this.codeMsg = "获取验证码";
+                                        //重置倒计时
+                                        this.time = 60;
+                                        //重置定时器
+                                        this.timer = null;
+                                        //恢复按钮状态
+                                        this.disabled = false;
+                                    }
+                                }
+                            }, 1000)
+                        }
+                    } else {
+                        //失败
+                        alert(d.errmsg)
+                    }
+                })
+            },
+        },
+        watch: {
+            password2: function () {
+                if (this.password2 != this.password){
+                    $("#passWordErrorMsg").removeAttr("hidden")
+                } else {
+                    $("#passWordErrorMsg").show()
+                }
+            }
+            //{
+            //
+            //     // handler(newValue, oldValue) {
+            //     //     if (newValue.password2 != newValue.password){
+            //     //         $("#passWordErrorMsg").removeAttr("hidden")
+            //     //     }else {
+            //     //         $("#passWordErrorMsg").attr("hidden","hidden")
+            //     //     }
+            //     // },
+            //     // deep: true
+            // }
+        }
     })
 </script>
