@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/select.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
+
     <!--[if lt IE 10]>
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
@@ -367,7 +368,7 @@
                     <dd><a href="javascript:;" class="menuPro-first selected">基本信息</a></dd>
                     <dd><a href="javascript:;" class="menuPro-first">我的收藏</a></dd>
                     <dd><a href="javascript:;" class="menuPro-first">我的关注</a></dd>
-                    <dd><a href="javascript:;" class="menuPro-first">账户安全</a></dd>
+                    <dd><a href="member-基本会员-账户安全.html" class="menuPro-first">账户安全</a></dd>
                     <dd><a href="javascript:;" class="menuPro-first">我的积分</a></dd>
                     <dd><a href="javascript:;" class="menuPro-first">我的站内信<span style="color:#b0e78e;">(8)</span></a>
                     </dd>
@@ -418,7 +419,7 @@
                                 <p>昵称：</p>
                                 <input type="text" class="input03 w250" v-model="user.nickname">
                             </div>
-                          
+
                             <div class="controls">
                                 <p>手机号：</p>
                                 <div class="basic-tel">{{user.phone}}</div>
@@ -428,45 +429,45 @@
                                 <p>邮箱：</p>
                                 <input type="text" class="input03 w250" v-model="user.email">
                             </div>
-                         
+
                             <div class="controls">
                                 <p>详细地址：</p>
-                               
+
                                 <div id="r-result"><input type="text" id="suggestId" size="20" value="百度" style="width:200px;height:50px" v-model="user.address" />
                                     <input type="submit" value="保存" @click="changeUserInfo" class="btn01 submit">
                                 </div>
-                                
+
                             </div>
                             <div class="controls">
-                                 
+
                                 </div>
                                 <div class="controls">
-                                     
+
                                     </div>
                                     <div class="controls">
-                                         
-                                            
+
+
                                         </div>
                                         <div class="controls">
-                                             
+
                                             </div>
                                             <div class="controls">
-                                             
+
                                                 </div>
                                                 <div class="controls">
-                                             
+
                                                     </div>
                                                     <div class="controls">
-                                             
+
                                                         </div>
-                           
+
                         </div>
                     </div>
                     <!-- 银行账户信息 -->
                     <div class="controls">
                         <div class="member-tit">
                             <p>账户信息</p>
-                           
+
                         </div>
                         <div class="controls">
                             <form action="#" class="member-form">
@@ -579,8 +580,7 @@
             }
         },
         created: function(){
-            this.user.phone = localStorage.getItem("phone");
-            this.user.username = localStorage.getItem("username")
+            this.user.phone = localStorage.getItem("phone")
             this.getUserByPhone(this.user);
         },
         methods: {
@@ -622,7 +622,7 @@
     })
 </script>
 
-<script type="text/javascript" 
+<script type="text/javascript"
 			src="http://api.map.baidu.com/api?v=2.0&ak=4IU3oIAMpZhfWZsMu7xzqBBAf6vMHcoa">
 		</script>
 <script type="text/javascript">
