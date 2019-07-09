@@ -18,9 +18,9 @@ Vue.component("topnav",{
     },
     methods:{
         logout:function(){
-            localStorage.removeItem("phone")
-            localStorage.removeItem("username")
-            location.href="index.html"
+            localStorage.removeItem("phone");
+            localStorage.removeItem("username");
+            location.href="index.html";
         }
     }
 })

@@ -545,22 +545,18 @@
 				   })
         },
         register:function(){
-            if(this.user.password !=null && this.user.password2 == this.user.password &&this.user.username!=null &&this.user.phone !=null){
                 regist(this.user).then(res=>{
 				var d =res.data.data;
 				if(d.errno==0){
 					alert(d.errmsg)
 					location.href="登陆.html"
 				}else{
-					alert("登录失败")
+					alert(d.errnoMg)
 				}
 			})
-            }else{
-                alert("输入有误,请重新输入")
-                
             }
 		
-		},
+
         
         },
         

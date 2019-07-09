@@ -36,14 +36,18 @@ function regist(params){
 function sms(phone){
     return axios.post("/web-service/sms",{"phone":phone});
 }
-
-//地址
-function getAddress(phone){
-    return axios.post("/web-service/address",{"phone":phone});
+//改密码--发送验证码
+function sms2(phone){
+    return axios.post("/web-service/sms2",{"phone":phone});
 }
-//添加地址
-function addAddress(params){
-    return axios.post("/web-service/addaddress",params);
+
+//改密码
+function updatePassword(params){
+    return axios.post("/web-service/updatePassword",params);
+}
+//查询分类
+function findClassifications(){
+    return axios.get("/web-service/findClassifications");
 }
 //添加地址
 function updateaddress(params){
