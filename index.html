@@ -84,50 +84,25 @@
                 <dt>
                     <a class="pro-all" href="javascript:;">商品全部分类&nbsp;&nbsp;<i class="fa fa-sort-desc fa-caret-up"></i></a>
                     <ul>
-                        <li class="pro-sort">
+                        <li class="pro-sort" v-for="firstLevel in classifications">
                             <div class="sort-first">
                                 <i class="fa fa-caret-right"></i>
-                                <a class="tit" href="">水产海鲜类</a>
+                                <a class="tit" href="">{{firstLevel.classificationName}}</a>
                                 <div class="con">
-                                    <a href="">鱼类</a>
-                                    <a href="">贝类</a>
-                                    <a href="">虾蟹类</a>
+                                    <a href="" v-for="secondLevel in firstLevel.classification">{{secondLevel.classificationName}}</a>
                                 </div>
                             </div>
                             <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
+                                <div class="second-list" v-for="secondLevel in firstLevel.classification">
+                                    <a class="second-tit" href="">{{secondLevel.classificationName}}}<i class="fa fa-angle-right"></i></a>
                                     <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a
-                                            href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a
-                                            href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a
-                                            href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a
-                                            href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a
-                                            href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a
-                                            href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a
-                                            href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a
-                                            href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a
-                                            href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a
-                                            href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a
-                                            href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
+                                        <span>|</span>
+                                        <span>|<a href="" v-for="thirdLevel in secondLevel.classification">{{thirdLevel.classificationName}}</a></span>
                                     </div>
                                 </div>
                                 <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
                             </div>
                         </li>
-
                     </ul>
                 </dt>
                 <dd><a class="selected" href="index.html">首页</a></dd>
@@ -2849,8 +2824,7 @@
         },
         created:function(){
             findClassifications().then(res =>{
-                console.log(res.data.data.data)
-
+                this.classifications = res.data.data.data
             })
         }
 
