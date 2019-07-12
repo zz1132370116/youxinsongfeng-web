@@ -50,42 +50,14 @@ function findClassifications(){
     return axios.get("/web-service/findClassifications");
 }
 
-//查询订单
+//查询商品
 function searchCommoditys(commodity){
     return axios.post("/web-service/search",commodity);
 }
 
-//添加地址
-function updateaddress(params){
-    return axios.post("/web-service/updateaddress",params);
-}
-//查询当前用户id
-function getUser(phone){
-    return axios.post("/web-service/getUser",{"phone":phone});
-}
-//删除通过id
-function deleted(id){
-    return axios.post("/web-service/deleted",{"id":id});
-}
-//首页商品展示
-function getProduct(){
-    return axios.get("/web-service/product");
-}
-//首页商家展示
-function getShop(){
-    return axios.get("/web-service/shop");
-}
-//通过id查询商品
-function getProductByid(id){
-    return axios.post("/web-service/getProductByid",{"productId":id});
-}
-//通过id查询商家
-function findShopById(id){
-    return axios.post("/web-service/findShopById",{"sid":id});
-}
-//加入购物车
-function addToCart(params){
-    return axios.post("/web-service/addToCart",params);
+//查询资源
+function findAllResources(){
+    return axios.get("/web-service/findAllResources");
 }
 
 //根据手机获取用户信息

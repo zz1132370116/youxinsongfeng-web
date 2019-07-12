@@ -170,9 +170,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <tr v-for="company in companys">
                                     <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
+                                        <a href="javascript:;" class="name">{{company.companyName}}</a>
                                         <a href="javascript:;" class="attention">【关注】</a>
                                     </td>
                                     <td>
@@ -180,98 +180,14 @@
                                         <p>牛肉</p>
                                         <p>羊肉</p>
                                     </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
+                                    <td><span v-for="cc in company.commodities" >{{cc.commodityName}},</span></td>
                                     <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
+                                    <td>{{company.update}}</td>
                                     <td>58</td>
                                     <td><a href="资源-快速预览.html" class="btn04">快速预览</a><a href="javascript:;"
                                                                                         class="btn04">下载</a></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="attention">【关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="attention">【关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="attention">【关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="attention">【关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="attention">【关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
+                             
                                 </tbody>
                             </table>
                         </div>
@@ -307,91 +223,7 @@
                                     <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
                                                                                         class="btn04">下载</a></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="no-attention">【取消关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="no-attention">【取消关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="no-attention">【取消关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="no-attention">【取消关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="javascript:;" class="name">河南众品食业股份有限公司</a>
-                                        <a href="javascript:;" class="no-attention">【取消关注】</a>
-                                    </td>
-                                    <td>
-                                        <p>鱼类</p>
-                                        <p>牛肉</p>
-                                        <p>羊肉</p>
-                                    </td>
-                                    <td>三文鱼、海参、带鱼、墨鱼、绵羊肉、羊腿、羊排、羊肉卷、牛腩肉、牛排肉、黄牛肉、肥牛肉···</td>
-                                    <td>资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单简介资源单</td>
-                                    <td>015-05-05 14：15</td>
-                                    <td>58</td>
-                                    <td><a href="javascript:;" class="btn04">快速预览</a><a href="javascript:;"
-                                                                                        class="btn04">下载</a></td>
-                                </tr>
+                               
                                 </tbody>
                             </table>
                         </div>
@@ -490,7 +322,22 @@
 
 <script>
     new Vue({
-        el: "#app"
+        el: "#app",
+        data:{
+            companys:
+                [
+                ]
+        },
+        methods:{
+
+        },
+        created:function(){
+            findAllResources().then(res =>{
+                this.companys =res.data.data.data;
+                console.log(this.companys)
+            })
+        }
+
     })
 </script>
 
