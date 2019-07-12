@@ -181,11 +181,11 @@
                             <dd>
                                 <label>
                                     <p>公司名称：</p>
-                                    <input type="text" v-model="commodity.company.company_name" class="input02 w125"/>
+                                    <input type="text" v-model="commodity.company.companyName" class="input02 w125"/>
                                 </label>
                                 <label>
                                     <p>级别：</p>
-                                    <select v-model="commodity.commodity_level" class="w125">
+                                    <select v-model="commodity.commodityLevel" class="w125">
                                         <option value="A级">A级</option>
                                         <option value="B级">B级</option>
                                         <option value="C级">C级</option>
@@ -194,19 +194,19 @@
                                 </label>
                                 <label>
                                     <p>仓库：</p>
-                                    <input type="text" v-model="commodity.commodity_warehouse" class="input02 w350"/>
+                                    <input type="text" v-model="commodity.commodityWarehouse" class="input02 w350"/>
                                 </label>
                                 <div class="clear"></div>
                                 <label>
                                     <p>期/现货：</p>
-                                    <select class="w125" v-model="commodity.commodity_sport">
+                                    <select class="w125" v-model="commodity.commoditySport">
                                         <option value="期货">期货</option>
                                         <option value="现货">现货</option>
                                     </select>
                                 </label>
                                 <label>
                                     <p>规则型号：</p>
-                                    <select v-model="commodity.commodity_specification" class="w125">
+                                    <select v-model="commodity.commoditySpecification" class="w125">
                                         <option value="80g">80g</option>
                                         <option value="100g">100g</option>
                                         <option value="120g">120g</option>
@@ -233,21 +233,21 @@
                                 <th>单价</th>
                                 <th>货币</th>
                                 <th>期/现货</th>
-                                <th style="width:170px">供应商</th>
+<!--                                <th style="width:170px">供应商</th>-->
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="(commodity,index) in commoditys" :accessKey="index">
-                                <td>{{commodity.commodity_name}}</td>
-                                <td>{{commodity.commodity_place}}</td>
-                                <td>{{commodity.commodity_specification}}</td>
-                                <td>{{commodity.commodity_level}}</td>
-                                <td>{{commodity.commodity_quantity}}</td>
-                                <td>{{commodity.commodity_currency}}</td>
-                                <td>{{commodity.commodity_price}}</td>
-                                <td>{{commodity.commodity_sport}}</td>
-                                <td>{{commodity.company.company_name}}</td>
+                                <td>{{commodity.commodityName}}</td>
+                                <td>{{commodity.commodityPlace}}</td>
+                                <td>{{commodity.commoditySpecification}}</td>
+                                <td>{{commodity.commodityLevel}}</td>
+                                <td>{{commodity.commodityQuantity}}</td>
+                                <td>{{commodity.commodityPrice}}</td>
+                                <td>{{commodity.commodityCurrency}}</td>
+                                <td>{{commodity.commoditySport}}</td>
+<!--                                <td>{{commodity.companys[0].companyName}}</td>-->
                                 <td>
                                     <a class="btn04" href="javascript:;">查看详情</a>
                                     <a class="btn04" href="javascript:;">加入购物车</a>
@@ -339,14 +339,14 @@
             classificationNameSelect: "",
             classificationLevel: 0,
             commodity: {             //订单查询对象
-                commodity_name: "",   //商品名称
-                commodity_place: "",  //商品产地
-                commodity_level: "",  //商品级别
-                commodity_warehouse: "",   //商品仓库
-                commodity_sport: "",    //期现货
-                commodity_specification: "",   //商品规格
+                commodityName: "",   //商品名称
+                commodityPlace: "",  //商品产地
+                commodityLevel: "",  //商品级别
+                commodityWarehouse: "",   //商品仓库
+                commoditySport: "",    //期现货
+                commoditySpecification: "",   //商品规格
                 company: {
-                    company_name: ""
+                    companyName:''
                 }
             },
             commoditys: [       //订单列表
@@ -398,7 +398,7 @@
                 var elem = e.target;
                 //给dom对象追加样式，不会覆盖原来的样式
                 elem.classList.add("selected")
-                this.commodity.commodity_name = elem.innerHTML;
+                this.commodity.commodityName = elem.innerHTML.trim();
             },
             //设置选中的商品产地的的样式
             selectPlace: function (e) {
@@ -410,7 +410,7 @@
                 })
                 var elem = e.target;
                 elem.classList.add("selected")
-                this.commodity.commodity_place = elem.innerHTML;
+                this.commodity.commodityPlace = elem.innerHTML.trim();
             },
             classificationFor: function (classificationNameSelect, classificationLevel) {
                 var _this = this;
@@ -446,8 +446,9 @@
                         }
                     }
 
-                    _this.commodity.commodity_name = _this.classificationNameSelect;
+                    _this.commodity.commodityName = _this.classificationNameSelect;
                     _this.searchCommoditys();
+                    _this.commodity.commodityName = "";
                 } else {
                     for (let i = 0; i < _this.classifications.length; i++) {
                         var temp = 0;
