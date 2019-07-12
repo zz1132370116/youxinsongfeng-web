@@ -29,6 +29,7 @@ Vue.component("classificationnav", {
             </ul>
         </dt>
     `,
+
     data: function () {
         return {
             classifications: JSON.parse(localStorage.getItem("classifications"))
