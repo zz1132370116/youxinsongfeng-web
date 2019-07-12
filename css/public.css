@@ -307,6 +307,7 @@ footer{ float: left; width: 100%;min-width: 1200px;_width:expression(document.bo
 .search-form01 label{display: block; float: left; margin: 0 0 10px 10px; color: #666;}
 .search-form01 label p{ float: left; width: 60px; line-height: 27px; text-align: right;}
 .search-form01 label input{ float: left; margin: 0 2px;}
+.search-form01 label select{ float: left; margin: 0 2px;}
 .search-form01 label .selectBox{ float: left;margin: 0 2px;}
 .search-form01 label span{display: block; float: left; line-height: 27px;}
 .search-form01 .search-btn{ float: left; width: 100%; margin: 10px 0;}

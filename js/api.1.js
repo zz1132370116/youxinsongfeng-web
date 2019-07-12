@@ -49,6 +49,12 @@ function updatePassword(params){
 function findClassifications(){
     return axios.get("/web-service/findClassifications");
 }
+
+//查询订单
+function searchCommoditys(commodity){
+    return axios.post("/web-service/searchCommoditys",commodity);
+}
+
 //添加地址
 function updateaddress(params){
     return axios.post("/web-service/updateaddress",params);

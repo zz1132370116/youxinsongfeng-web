@@ -11,6 +11,22 @@
     <link rel="stylesheet" href="css/select.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
+
+    <style>
+        .clear{
+            clear: left;
+        }
+        .markClassification{  //用于标记右侧的三级分类
+
+        }
+        .markPlace{  //用于标记产地
+
+        }
+        .markSecond{  //用于标记左侧的二级分类
+
+        }
+    </style>
+
     <!--[if lt IE 10]>
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
@@ -83,189 +99,30 @@
                 <dt>
                     <a class="pro-all" href="javascript:;">商品全部分类&nbsp;&nbsp;<i class="fa fa-sort-desc fa-caret-up"></i></a>
                     <ul>
-                        <li class="pro-sort">
+                        <li class="pro-sort" v-for="classification1 in classifications">
                             <div class="sort-first">
-                                <i class="fa fa-angle-right"></i>
-                                <a class="tit" href="">水产海鲜类</a>
+                                <i class="fa fa-caret-right"></i>
+                                <a class="tit" href="javascript:;">{{classification1.classificationName}}</a>
                                 <div class="con">
-                                    <a href="">鱼类</a>
-                                    <a href="">贝类</a>
-                                    <a href="">虾蟹类</a>
+                                    <a href="#" v-for="classification2 in classification1.classification" >{{classification2.classificationName}}</a>
                                 </div>
                             </div>
                             <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
+
+                                <div class="second-list" v-for="classification2 in classification1.classification" >
+                                    <a class="second-tit" href="#" @click="classificationFor(classification2.classificationName,2)">{{classification2.classificationName}}<i class="fa fa-angle-right"></i></a>
                                     <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
+
+                                        <span v-if="classification2.classification != null">|</span>
+                                        <span  v-for="classification3 in classification2.classification">|
+                                            <a href="#" @click="classificationFor(classification3.classificationName,3)">{{classification3.classificationName}}</a>
+                                        </span>
+
+
                                     </div>
                                 </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
-                            </div>
-                        </li>
-                        <li class="pro-sort">
-                            <div class="sort-first">
-                                <i class="fa fa-angle-right"></i>
-                                <a class="tit" href="">禽类</a>
-                                <div class="con">
-                                    <a href="">猪</a>
-                                    <a href="">牛</a>
-                                    <a href="">羊</a>
-                                    <a href="">鸡</a>
-                                    <a href="">鸭</a>
-                                </div>
-                            </div>
-                            <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
-                            </div>
-                        </li>
-                        <li class="pro-sort">
-                            <div class="sort-first">
-                                <i class="fa fa-angle-right"></i>
-                                <a class="tit" href="">粮油副食类</a>
-                                <div class="con">
-                                    <a href="">大米类</a>
-                                    <a href="">食用油类</a>
-                                    <a href="">杂粮类</a>
-                                </div>
-                            </div>
-                            <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
-                            </div>
-                        </li>
-                        <li class="pro-sort">
-                            <div class="sort-first">
-                                <i class="fa fa-angle-right"></i>
-                                <a class="tit" href="">熟食调理类</a>
-                                <div class="con">
-                                    <a href="">肉丸类</a>
-                                    <a href="">水饺类</a>
-                                </div>
-                            </div>
-                            <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
-                            </div>
-                        </li>
-                        <li class="pro-sort">
-                            <div class="sort-first">
-                                <i class="fa fa-angle-right"></i>
-                                <a class="tit" href="">调料类</a>
-                                <div class="con">
-                                    <a href="">酱料类</a>
-                                </div>
-                            </div>
-                            <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
-                            </div>
-                        </li>
-                        <li class="pro-sort">
-                            <div class="sort-first">
-                                <a class="tit" href="">其他</a>
-                            </div>
-                            <div class="sort-second">
-                                <div class="second-list">
-                                    <a class="second-tit" href="">鱼类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a><span>|</span><a href="">多春鱼</a><span>|</span><a href="">黄花鱼</a><span>|</span><a href="">龙利鱼</a><span>|</span><a href="">三文鱼</a><span>|</span><a href="">银鳕鱼</a><span>|</span><a href="">鳗鱼</a><span>|</span><a href="">金枪鱼</a><span>|</span><a href="">鲍鱼</a><span>|</span><a href="">带鱼</a><span>|</span><a href="">秋刀鱼</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">贝类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">北极贝</a><span>|</span><a href="">青口贝</a><span>|</span><a href="">扇贝</a>
-                                    </div>
-                                </div>
-                                <div class="second-list">
-                                    <a class="second-tit" href="">虾蟹类<i class="fa fa-angle-right"></i></a>
-                                    <div class="second-con">
-                                        <span>|</span><a href="">红虾</a><span>|</span><a href="">基围虾</a><span>|</span><a href="">波士顿龙虾</a><span>|</span><a href="">海虎虾</a><span>|</span><a href="">大闸蟹</a><span>|</span><a href="">帝王蟹</a><span>|</span><a href="">阿拉斯加蟹脚</a><span>|</span><a href="">雪蟹</a>
-                                    </div>
-                                </div>
-                                <a class="second-add" href=""><img src="images/sort-add01.jpg" alt=""/></a>
+
+                                <a class="second-add" href="#"><img src="images/sort-add01.jpg" alt=""/></a>
                             </div>
                         </li>
                     </ul>
@@ -290,76 +147,16 @@
             <div class="bread-crumbs">
                 <a href="index.html">首页</a>
                 <span><i class="fa fa-angle-double-right"></i></span>
-                <a href="javascript:;" class="selected">冻品类</a>
+                <a href="javascript:;" class="selected">{{classification.classificationName}}</a>
             </div>
             <!-- 内容主体区 -->
             <div class="content-main">
                 <!-- 左侧 -->
                 <div class="search-left">
                     <dl>
-                        <dt>冻品类</dt>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first selected"><i class="fa fa-plus-square"></i>猪肉</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>羊肉</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>牛肉</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>禽肉</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>肉制品</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>禽蛋</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="javascript:;" class="menuPro-first"><i class="fa fa-plus-square"></i>进口肉类</a>
-                            <div class="menuPro-second">
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                                <a href="javascript:;"><i class="fa fa-angle-right"></i>二级分类</a>
-                            </div>
+                        <dt>{{classification.classificationName}}</dt>
+                        <dd v-for="classification2 in classification.classification">
+                            <a href="javascript:;" @click="markSecondClassification($event)" class="menuPro-first" :class="classification2.classificationName == classificationSecond.classificationName?'selected':null">{{classification2.classificationName}}</a>
                         </dd>
                     </dl>
                     <a class="search-add" href="javascript:;">
@@ -372,58 +169,56 @@
                     <div class="search-form01">
                         <dl>
                             <dt>分类：</dt>
-                            <dd><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span><span>全部</span><span>猪头肉</span></dd>
+                            <dd><span @click="selectClassification($event)" v-for="(classification3,index) in classificationSecond.classification" :accessKey="index" class="markClassification">{{classification3.classificationName}}</span></dd>
                         </dl>
                         <dl>
-                            <dt>差地：</dt>
-                            <dd><span>全部</span><span>欧洲</span><span>欧洲</span><span>国内</span></dd>
+                            <dt>产地：</dt>
+                            <dd>
+                                <span class="markPlace" @click="selectPlace($event)">欧洲</span>
+                                <span class="markPlace" @click="selectPlace($event)">美国</span>
+                                <span class="markPlace" @click="selectPlace($event)">中国</span>
+                                <span class="markPlace" @click="selectPlace($event)">澳大利亚</span></dd>
                         </dl>
                         <dl>
                             <dt>检索：</dt>
                             <dd>
-                                <label for="">
-                                    <p>产品名称：</p>
-                                    <input type="text" class="input02 w125"/>
-                                </label>
-                                <label for="">
+                                <label>
                                     <p>公司名称：</p>
-                                    <input type="text" class="input02 w125"/>
+                                    <input type="text" v-model="commodity.company.company_name" class="input02 w125"/>
                                 </label>
-                                <label for="">
-                                    <p>组别：</p>
-                                    <input type="text" class="input02 w100"/>
-                                </label>
-                                <label for="">
-                                    <p>价格区间：</p>
-                                    <select name="" id="" class="w100">
-                                        <option value="">请选择</option>
-                                        <option value="">类型一</option>
-                                        <option value="">类型二</option>
-                                        <option value="">类型三</option>
+                                <label>
+                                    <p>级别：</p>
+                                    <select v-model="commodity.commodity_level" class="w125" >
+                                        <option value="A级">A级</option>
+                                        <option value="B级">B级</option>
+                                        <option value="C级">C级</option>
+                                        <option value="D级">D级</option>
                                     </select>
-                                    <input type="text" class="input02 w45"/>
-                                    <i>-</i>
-                                    <input type="text" class="input02 w45"/>
                                 </label>
-                                <label for="">
+                                <label>
                                     <p>仓库：</p>
-                                    <input type="text" class="input02 w125"/>
+                                    <input type="text" v-model="commodity.commodity_warehouse" class="input02 w350"/>
                                 </label>
-                                <label for="">
-                                    <p>期现货：</p>
-                                    <select name="" id="" class="w125">
-                                        <option value="">请选择</option>
-                                        <option value="">类型一</option>
-                                        <option value="">类型二</option>
-                                        <option value="">类型三</option>
+                                <div class="clear"></div>
+                                <label>
+                                    <p>期/现货：</p>
+                                    <select class="w125" v-model="commodity.commodity_sport">
+                                        <option value="期货">期货</option>
+                                        <option value="现货">现货</option>
                                     </select>
                                 </label>
-                                <label for="">
+                                <label>
                                     <p>规则型号：</p>
-                                    <input type="text" class="input02 w125"/>
+                                    <select v-model="commodity.commodity_specification" class="w125">
+                                        <option value="80g">80g</option>
+                                        <option value="100g">100g</option>
+                                        <option value="120g">120g</option>
+                                        <option value="150g">150g</option>
+                                        <option value="180g">180g</option>
+                                    </select>
                                 </label>
                                 <div class="search-btn">
-                                    <input type="submit" class="search" value="检索">
+                                    <input type="submit" @click="searchCommoditys()" class="search" value="检索">
                                 </div>
                             </dd>
                         </dl>
@@ -432,202 +227,36 @@
                     <div class="search-table">
                         <table>
                             <thead>
-                            <tr>
-                                <th>产品名称</th>
-                                <th>产地</th>
-                                <th style="width:100px;">品牌</th>
-                                <th>规格型号</th>
-                                <th>级别</th>
-                                <th>数量(KG)</th>
-                                <th>单价</th>
-                                <th>货币</th>
-                                <th>波动</th>
-                                <th>期/现货</th>
-                                <th style="width:170px">供应商</th>
-                                <th>操作</th>
-                            </tr>
+                                <tr>
+                                    <th>产品名称</th>
+                                    <th>产地</th>
+                                    <th>规格型号</th>
+                                    <th>级别</th>
+                                    <th>数量(KG)</th>
+                                    <th>单价</th>
+                                    <th>货币</th>
+                                    <th>期/现货</th>
+                                    <th style="width:170px">供应商</th>
+                                    <th>操作</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>牛肉卷</td>
-                                <td>澳洲</td>
-                                <td>唐人基</td>
-                                <td>120g</td>
-                                <td>A级</td>
-                                <td>2000000</td>
-                                <td>RMB</td>
-                                <td>58.00</td>
-                                <td>+3.8%</td>
-                                <td>现货</td>
-                                <td>洛阳众品食业有限公司</td>
-                                <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
-                                    <a class="btn04" href="javascript:;">加入购物车</a>
-                                    <a class="btn04" href="javascript:;">收藏</a>
-                                </td>
-                            </tr>
+                                <tr v-for="(commodity,index) in commoditys" :accessKey="index">
+                                    <td>{{commodity.commodity_name}}</td>
+                                    <td>{{commodity.commodity_place}}</td>
+                                    <td>{{commodity.commodity_specification}}</td>
+                                    <td>{{commodity.commodity_level}}</td>
+                                    <td>{{commodity.commodity_quantity}}</td>
+                                    <td>{{commodity.commodity_currency}}</td>
+                                    <td>{{commodity.commodity_price}}</td>
+                                    <td>{{commodity.commodity_sport}}</td>
+                                    <td>{{commodity.company.company_name}}</td>
+                                    <td>
+                                        <a class="btn04" href="javascript:;">查看详情</a>
+                                        <a class="btn04" href="javascript:;">加入购物车</a>
+                                        <a class="btn04" href="javascript:;">收藏</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -694,7 +323,7 @@
 <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/jquery.accordion.js"></script>
-<script type="text/javascript" src="js/jquery.selectBox.js"></script>
+<!--<script type="text/javascript" src="js/jquery.selectBox.js"></script>-->
 
 <script src="js/axios-0.18.0.js"></script>
 <script src="js/vuejs-2.5.16.js"></script>
@@ -703,7 +332,141 @@
 
 <script>
     new Vue({
-        el: "#app"
+        el: "#app",
+        data:{
+            classifications:[],
+            classification: {},   //当前的一级分类对象
+            classificationSecond:{},   //当前二级分类对象
+            classificationNameSelect: "",
+            classificationLevel: 0,
+            commodity: {             //订单查询对象
+                commodity_name: "",   //商品名称
+                commodity_place: "",  //商品产地
+                commodity_level: "",  //商品级别
+                commodity_warehouse: "",   //商品仓库
+                commodity_sport: "",    //期现货
+                commodity_specification: "",   //商品规格
+                company: {
+                    company_name: ""
+                }
+            },
+            commoditys:[       //订单列表
+
+            ]
+
+        },
+        methods:{
+            //搜索资源单
+            searchCommoditys: function(){
+                var _this = this
+
+                console.log(_this.commodity)
+
+                /*searchCommoditys(_this.commodity).then(res => {
+                    console.log(res.data.data)
+                    _this.commoditys = res.data.data.data;
+                    console.log(_this.commoditys)
+                });*/
+            },
+            //设置选中的商品二级分类的样式
+            markSecondClassification: function(e){
+                var _this = this
+
+                $(".menuPro-first").each(function (i,v) {
+                    var classes = v.getAttribute("class")
+                    if (classes.indexOf("selected") != -1) {
+                        v.classList.remove("selected")
+                    }
+                })
+                var elem = e.target;
+                //给dom对象追加样式，不会覆盖原来的样式
+                elem.classList.add("selected")
+                //遍历当前一级分类的二级分类，将选中的二级分类找出来，并且将其保存到localStorage中。
+                _this.classification.classification.forEach(function (item) {
+                    if (item.classificationName == elem.innerHTML){
+                        _this.classificationSecond = item;
+                        localStorage.setItem("classificationNameSelect",item.classificationName);
+                    }
+                })
+            },
+
+            //设置选中的商品三级分类的样式，并将选中的值赋给commodity.commodity_name，作为查询的参数
+            selectClassification: function (e) {
+                //根据class获取一组dom，遍历将原来的选中的分类的样式去除
+                $(".markClassification").each(function (i,v) {
+                    var classes = v.getAttribute("class")
+                    if (classes.indexOf("selected") != -1) {
+                        v.classList.remove("selected")
+                    }
+                })
+                var elem = e.target;
+                //给dom对象追加样式，不会覆盖原来的样式
+                elem.classList.add("selected")
+                this.commodity.commodity_name = elem.innerHTML;
+            },
+            selectPlace: function (e) {
+                $(".markPlace").each(function (i,v) {
+                    var classes = v.getAttribute("class")
+                    if (classes.indexOf("selected") != -1) {
+                        v.classList.remove("selected")
+                    }
+                })
+                var elem = e.target;
+                elem.classList.add("selected")
+                this.commodity.commodity_place = elem.innerHTML;
+            }
+        },
+        created:function(){
+            var _this = this
+            _this.classifications = JSON.parse(localStorage.getItem("classifications"));
+            _this.classificationNameSelect = localStorage.getItem("classificationNameSelect");
+            _this.classificationLevel = localStorage.getItem("classificationLevel");
+
+            if (_this.classificationLevel == 3){
+                for (let i = 0; i < _this.classifications.length; i++) {
+                    var temp = 0;
+                    var classification1 = _this.classifications[i];
+                    for (let j = 0; j < classification1.classification.length; j++) {
+                        var classification2 = classification1.classification[j];
+                        for (let k = 0; k < classification2.classification.length; k++) {
+                            var classification3 = classification2.classification[k];
+                            if (classification3.classificationName == _this.classificationNameSelect){
+                                _this.classification = classification1;
+                                _this.classificationSecond = classification2;
+                                temp = 1;
+                                break;
+                            }
+                        }
+                        if (temp == 1){
+                            break;
+                        }
+                    }
+                    if (temp == 1){
+                        break;
+                    }
+                }
+
+                _this.commodity.commodity_name = _this.classificationNameSelect;
+                _this.searchCommoditys();
+            } else {
+                for (let i = 0; i < _this.classifications.length; i++) {
+                    var temp = 0;
+                    var classification1 = _this.classifications[i];
+                    for (let j = 0; j < classification1.classification.length; j++) {
+                        var classification2 = classification1.classification[j];
+                        if (classification2.classificationName == _this.classificationNameSelect){
+                            _this.classification = classification1;
+                            _this.classificationSecond = classification2;
+                            temp = 1;
+                            break;
+                        }
+                    }
+                    if (temp == 1){
+                        break;
+                    }
+                }
+            }
+        }
     })
 </script>
 

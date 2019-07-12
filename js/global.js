@@ -273,21 +273,21 @@ $(function(){
     setInterval('getdata()', 3000);
 });
 function getdata(){
-    $.ajax({
-        type:'GET',
-        url:'dataNusms.php?data'+Math.random(),
-        timeout:1000,
-        success:function(data){
-            show_num('#total-1',6706);
-            show_num('#total-2',8706);
-            show_num('#total-3',18706);
-        },
-        error:function(){
-            show_num('#total-1',6666);
-            show_num('#total-2',9999);
-            show_num('#total-3',22229);
-        }
-    });
+    // $.ajax({
+    //     type:'GET',
+    //     url:'dataNusms.php?data'+Math.random(),
+    //     timeout:1000,
+    //     success:function(data){
+    //         show_num('#total-1',6706);
+    //         show_num('#total-2',8706);
+    //         show_num('#total-3',18706);
+    //     },
+    //     error:function(){
+    //         show_num('#total-1',6666);
+    //         show_num('#total-2',9999);
+    //         show_num('#total-3',22229);
+    //     }
+    // });
 }
 function show_num($Id,n){
     var it = $($Id).find(".num i");
