@@ -52,7 +52,7 @@ function findClassifications(){
 
 //查询订单
 function searchCommoditys(commodity){
-    return axios.post("/web-service/searchCommoditys",commodity);
+    return axios.post("/web-service/search",commodity);
 }
 
 //添加地址

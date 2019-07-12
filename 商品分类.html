@@ -13,16 +13,22 @@
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
     <style>
-        .clear{
+        .clear {
             clear: left;
         }
-        .markClassification{  //用于标记右侧的三级分类
+
+        .markClassification {
+        / / 用于标记右侧的三级分类
 
         }
-        .markPlace{  //用于标记产地
+
+        .markPlace {
+        / / 用于标记产地
 
         }
-        .markSecond{  //用于标记左侧的二级分类
+
+        .markSecond {
+        / / 用于标记左侧的二级分类
 
         }
     </style>
@@ -104,18 +110,21 @@
                                 <i class="fa fa-caret-right"></i>
                                 <a class="tit" href="javascript:;">{{classification1.classificationName}}</a>
                                 <div class="con">
-                                    <a href="#" v-for="classification2 in classification1.classification" >{{classification2.classificationName}}</a>
+                                    <a href="#" v-for="classification2 in classification1.classification">{{classification2.classificationName}}</a>
                                 </div>
                             </div>
                             <div class="sort-second">
 
-                                <div class="second-list" v-for="classification2 in classification1.classification" >
-                                    <a class="second-tit" href="#" @click="classificationFor(classification2.classificationName,2)">{{classification2.classificationName}}<i class="fa fa-angle-right"></i></a>
+                                <div class="second-list" v-for="classification2 in classification1.classification">
+                                    <a class="second-tit" href="#"
+                                       @click="classificationFor(classification2.classificationName,2)">{{classification2.classificationName}}<i
+                                            class="fa fa-angle-right"></i></a>
                                     <div class="second-con">
 
                                         <span v-if="classification2.classification != null">|</span>
-                                        <span  v-for="classification3 in classification2.classification">|
-                                            <a href="#" @click="classificationFor(classification3.classificationName,3)">{{classification3.classificationName}}</a>
+                                        <span v-for="classification3 in classification2.classification">|
+                                            <a href="#"
+                                               @click="classificationFor(classification3.classificationName,3)">{{classification3.classificationName}}</a>
                                         </span>
 
 
@@ -127,8 +136,8 @@
                         </li>
                     </ul>
                 </dt>
-                <dd><a class="selected" href="index.html">首页</a></dd>
-                <dd><a href="资源.html">资源</a></dd>
+                <dd><a href="index.html">首页</a></dd>
+                <dd><a class="selected" href="资源.html">资源</a></dd>
                 <dd><a href="采购.html">采购</a></dd>
                 <dd><a href="搜索.html">搜索</a></dd>
                 <dd><a href="物流.html">物流</a></dd>
@@ -145,7 +154,7 @@
         <div class="container">
             <!-- 面包屑导航 -->
             <div class="bread-crumbs">
-                <a href="index.html">首页</a>
+                <a href="资源.html">资源</a>
                 <span><i class="fa fa-angle-double-right"></i></span>
                 <a href="javascript:;" class="selected">{{classification.classificationName}}</a>
             </div>
@@ -156,7 +165,8 @@
                     <dl>
                         <dt>{{classification.classificationName}}</dt>
                         <dd v-for="classification2 in classification.classification">
-                            <a href="javascript:;" @click="markSecondClassification($event)" class="menuPro-first" :class="classification2.classificationName == classificationSecond.classificationName?'selected':null">{{classification2.classificationName}}</a>
+                            <a href="javascript:;" @click="markSecondClassification($event)" class="menuPro-first"
+                               :class="classification2.classificationName == classificationSecond.classificationName?'selected':null">{{classification2.classificationName}}</a>
                         </dd>
                     </dl>
                     <a class="search-add" href="javascript:;">
@@ -169,7 +179,14 @@
                     <div class="search-form01">
                         <dl>
                             <dt>分类：</dt>
-                            <dd><span @click="selectClassification($event)" v-for="(classification3,index) in classificationSecond.classification" :accessKey="index" class="markClassification">{{classification3.classificationName}}</span></dd>
+                            <dd>
+                                <span @click="selectClassification($event)"
+                                      v-for="(classification3,index) in classificationSecond.classification"
+                                      :accessKey="index" class="markClassification"
+                                      :class="commodity.commodity_name == classification3.classificationName?'selected':null">
+                                    {{classification3.classificationName}}
+                                </span>
+                            </dd>
                         </dl>
                         <dl>
                             <dt>产地：</dt>
@@ -188,7 +205,7 @@
                                 </label>
                                 <label>
                                     <p>级别：</p>
-                                    <select v-model="commodity.commodity_level" class="w125" >
+                                    <select v-model="commodity.commodity_level" class="w125">
                                         <option value="A级">A级</option>
                                         <option value="B级">B级</option>
                                         <option value="C级">C级</option>
@@ -227,36 +244,36 @@
                     <div class="search-table">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>产品名称</th>
-                                    <th>产地</th>
-                                    <th>规格型号</th>
-                                    <th>级别</th>
-                                    <th>数量(KG)</th>
-                                    <th>单价</th>
-                                    <th>货币</th>
-                                    <th>期/现货</th>
-                                    <th style="width:170px">供应商</th>
-                                    <th>操作</th>
-                                </tr>
+                            <tr>
+                                <th>产品名称</th>
+                                <th>产地</th>
+                                <th>规格型号</th>
+                                <th>级别</th>
+                                <th>数量(KG)</th>
+                                <th>单价</th>
+                                <th>货币</th>
+                                <th>期/现货</th>
+                                <th style="width:170px">供应商</th>
+                                <th>操作</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(commodity,index) in commoditys" :accessKey="index">
-                                    <td>{{commodity.commodity_name}}</td>
-                                    <td>{{commodity.commodity_place}}</td>
-                                    <td>{{commodity.commodity_specification}}</td>
-                                    <td>{{commodity.commodity_level}}</td>
-                                    <td>{{commodity.commodity_quantity}}</td>
-                                    <td>{{commodity.commodity_currency}}</td>
-                                    <td>{{commodity.commodity_price}}</td>
-                                    <td>{{commodity.commodity_sport}}</td>
-                                    <td>{{commodity.company.company_name}}</td>
-                                    <td>
-                                        <a class="btn04" href="javascript:;">查看详情</a>
-                                        <a class="btn04" href="javascript:;">加入购物车</a>
-                                        <a class="btn04" href="javascript:;">收藏</a>
-                                    </td>
-                                </tr>
+                            <tr v-for="(commodity,index) in commoditys" :accessKey="index">
+                                <td>{{commodity.commodity_name}}</td>
+                                <td>{{commodity.commodity_place}}</td>
+                                <td>{{commodity.commodity_specification}}</td>
+                                <td>{{commodity.commodity_level}}</td>
+                                <td>{{commodity.commodity_quantity}}</td>
+                                <td>{{commodity.commodity_currency}}</td>
+                                <td>{{commodity.commodity_price}}</td>
+                                <td>{{commodity.commodity_sport}}</td>
+                                <td>{{commodity.company.company_name}}</td>
+                                <td>
+                                    <a class="btn04" href="javascript:;">查看详情</a>
+                                    <a class="btn04" href="javascript:;">加入购物车</a>
+                                    <a class="btn04" href="javascript:;">收藏</a>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -311,7 +328,7 @@
                 <span>|</span>
                 <a href="javascript:;">友情链接</a>
             </div>
-            <p>Copyright <i class="fa fa-copyright"></i> 超鲜网 粤ICP备 13013915号-3  ICP证：粤B2-201401448</p>
+            <p>Copyright <i class="fa fa-copyright"></i> 超鲜网 粤ICP备 13013915号-3 ICP证：粤B2-201401448</p>
         </div>
     </footer>
 </div>
@@ -333,10 +350,11 @@
 <script>
     new Vue({
         el: "#app",
-        data:{
-            classifications:[],
+        data: {
+            classifications: [],
             classification: {},   //当前的一级分类对象
-            classificationSecond:{},   //当前二级分类对象
+            classificationSecond: {},   //当前二级分类对象
+            classificationThird: {},    //当前选中的三级分类对象
             classificationNameSelect: "",
             classificationLevel: 0,
             commodity: {             //订单查询对象
@@ -350,29 +368,27 @@
                     company_name: ""
                 }
             },
-            commoditys:[       //订单列表
+            commoditys: [       //订单列表
 
             ]
 
         },
-        methods:{
+        methods: {
             //搜索资源单
-            searchCommoditys: function(){
+            searchCommoditys: function () {
                 var _this = this
-
                 console.log(_this.commodity)
-
-                /*searchCommoditys(_this.commodity).then(res => {
+                searchCommoditys(_this.commodity).then(res => {
                     console.log(res.data.data)
                     _this.commoditys = res.data.data.data;
                     console.log(_this.commoditys)
-                });*/
+                });
             },
             //设置选中的商品二级分类的样式
-            markSecondClassification: function(e){
+            markSecondClassification: function (e) {
                 var _this = this
 
-                $(".menuPro-first").each(function (i,v) {
+                $(".menuPro-first").each(function (i, v) {
                     var classes = v.getAttribute("class")
                     if (classes.indexOf("selected") != -1) {
                         v.classList.remove("selected")
@@ -383,17 +399,16 @@
                 elem.classList.add("selected")
                 //遍历当前一级分类的二级分类，将选中的二级分类找出来，并且将其保存到localStorage中。
                 _this.classification.classification.forEach(function (item) {
-                    if (item.classificationName == elem.innerHTML){
+                    if (item.classificationName == elem.innerHTML) {
                         _this.classificationSecond = item;
-                        localStorage.setItem("classificationNameSelect",item.classificationName);
+                        localStorage.setItem("classificationNameSelect", item.classificationName);
                     }
                 })
             },
-
             //设置选中的商品三级分类的样式，并将选中的值赋给commodity.commodity_name，作为查询的参数
             selectClassification: function (e) {
                 //根据class获取一组dom，遍历将原来的选中的分类的样式去除
-                $(".markClassification").each(function (i,v) {
+                $(".markClassification").each(function (i, v) {
                     var classes = v.getAttribute("class")
                     if (classes.indexOf("selected") != -1) {
                         v.classList.remove("selected")
@@ -404,8 +419,9 @@
                 elem.classList.add("selected")
                 this.commodity.commodity_name = elem.innerHTML;
             },
+            //设置选中的商品产地的的样式
             selectPlace: function (e) {
-                $(".markPlace").each(function (i,v) {
+                $(".markPlace").each(function (i, v) {
                     var classes = v.getAttribute("class")
                     if (classes.indexOf("selected") != -1) {
                         v.classList.remove("selected")
@@ -414,74 +430,93 @@
                 var elem = e.target;
                 elem.classList.add("selected")
                 this.commodity.commodity_place = elem.innerHTML;
-            }
-        },
-        created:function(){
-            var _this = this
-            _this.classifications = JSON.parse(localStorage.getItem("classifications"));
-            _this.classificationNameSelect = localStorage.getItem("classificationNameSelect");
-            _this.classificationLevel = localStorage.getItem("classificationLevel");
+            },
+            classificationFor: function (classificationNameSelect, classificationLevel) {
+                var _this = this;
 
-            if (_this.classificationLevel == 3){
-                for (let i = 0; i < _this.classifications.length; i++) {
-                    var temp = 0;
-                    var classification1 = _this.classifications[i];
-                    for (let j = 0; j < classification1.classification.length; j++) {
-                        var classification2 = classification1.classification[j];
-                        for (let k = 0; k < classification2.classification.length; k++) {
-                            var classification3 = classification2.classification[k];
-                            if (classification3.classificationName == _this.classificationNameSelect){
+                localStorage.setItem("classificationNameSelect", classificationNameSelect);
+                localStorage.setItem("classificationLevel", classificationLevel);
+
+                _this.classifications = JSON.parse(localStorage.getItem("classifications"));
+                _this.classificationNameSelect = classificationNameSelect;
+                _this.classificationLevel = classificationLevel;
+
+                if (_this.classificationLevel == 3) {
+                    for (let i = 0; i < _this.classifications.length; i++) {
+                        var temp = 0;
+                        var classification1 = _this.classifications[i];
+                        for (let j = 0; j < classification1.classification.length; j++) {
+                            var classification2 = classification1.classification[j];
+                            for (let k = 0; k < classification2.classification.length; k++) {
+                                var classification3 = classification2.classification[k];
+                                if (classification3.classificationName == _this.classificationNameSelect) {
+                                    _this.classification = classification1;
+                                    _this.classificationSecond = classification2;
+                                    temp = 1;
+                                    break;
+                                }
+                            }
+                            if (temp == 1) {
+                                break;
+                            }
+                        }
+                        if (temp == 1) {
+                            break;
+                        }
+                    }
+
+                    _this.commodity.commodity_name = _this.classificationNameSelect;
+                    _this.searchCommoditys();
+                } else {
+                    for (let i = 0; i < _this.classifications.length; i++) {
+                        var temp = 0;
+                        var classification1 = _this.classifications[i];
+                        for (let j = 0; j < classification1.classification.length; j++) {
+                            var classification2 = classification1.classification[j];
+                            if (classification2.classificationName == _this.classificationNameSelect) {
                                 _this.classification = classification1;
                                 _this.classificationSecond = classification2;
                                 temp = 1;
                                 break;
                             }
                         }
-                        if (temp == 1){
+                        if (temp == 1) {
                             break;
                         }
-                    }
-                    if (temp == 1){
-                        break;
-                    }
-                }
-
-                _this.commodity.commodity_name = _this.classificationNameSelect;
-                _this.searchCommoditys();
-            } else {
-                for (let i = 0; i < _this.classifications.length; i++) {
-                    var temp = 0;
-                    var classification1 = _this.classifications[i];
-                    for (let j = 0; j < classification1.classification.length; j++) {
-                        var classification2 = classification1.classification[j];
-                        if (classification2.classificationName == _this.classificationNameSelect){
-                            _this.classification = classification1;
-                            _this.classificationSecond = classification2;
-                            temp = 1;
-                            break;
-                        }
-                    }
-                    if (temp == 1){
-                        break;
                     }
                 }
             }
+        },
+        created: function () {
+            var _this = this
+
+            _this.classificationNameSelect = localStorage.getItem("classificationNameSelect");
+            _this.classificationLevel = localStorage.getItem("classificationLevel");
+
+            _this.classificationFor(_this.classificationNameSelect, _this.classificationLevel);
         }
     })
 </script>
 
 <script type="text/javascript">
-    jQuery("#bannerIndex").slide({mainCell:".bd ul",autoPlay:true});
-    jQuery(".banner-quotes01").each(function(){
-        $(this).slide({mainCell:".bd ul",autoPlay:false});
+    jQuery("#bannerIndex").slide({mainCell: ".bd ul", autoPlay: true});
+    jQuery(".banner-quotes01").each(function () {
+        $(this).slide({mainCell: ".bd ul", autoPlay: false});
     });
-    jQuery(".banner-quotes02").each(function(){
-        $(this).slide({mainCell:".bd ul",autoPlay:false});
+    jQuery(".banner-quotes02").each(function () {
+        $(this).slide({mainCell: ".bd ul", autoPlay: false});
     });
-    jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:13});
+    jQuery(".txtScroll-top").slide({
+        titCell: ".hd ul",
+        mainCell: ".bd ul",
+        autoPage: true,
+        effect: "top",
+        autoPlay: true,
+        vis: 13
+    });
 </script>
 <script type="text/javascript">
-    $(function(){
-        $('dl#my-accordion').accordion({open:true});
+    $(function () {
+        $('dl#my-accordion').accordion({open: true});
     });
 </script>
