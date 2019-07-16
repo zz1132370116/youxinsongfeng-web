@@ -75,6 +75,11 @@ function uploadImage(params,config) {
     return axios.post("/web-service/uploadImage",params,config);
 }
 
+//
+function releasePurchase(params) {
+    return axios.post("/web-service/releasePurchase",params);
+}
+
 // //商品分类
 // function getCategorys(){
 //     return axios.get("/web-service/categorys");
