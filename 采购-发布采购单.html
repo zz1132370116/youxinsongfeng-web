@@ -313,6 +313,18 @@
                     alert("采购物品不能为空")
                     return
                 }
+                if(_this.purchase.originRequirements == "请选择"){
+                    _this.purchase.originRequirements = ""
+                }
+                if(_this.purchase.specificationType == "请选择"){
+                    _this.purchase.specificationType = ""
+                }
+                if(_this.purchase.level == "请选择"){
+                    _this.purchase.level = ""
+                }
+                if(_this.purchase.purchaseSport == "请选择"){
+                    _this.purchase.purchaseSport = ""
+                }
                 if(_this.purchase.purchasePrice == ""){
                     alert("价格不能为空")
                     return
@@ -343,6 +355,26 @@
                 console.log(_this.purchase)
                 releasePurchase(_this.purchase).then(res => {
                     console.log(res.data.data)
+                    var data = res.data.data;
+                    if (data.errno == 0){
+                        alert(data.errmsg)
+                        _this.purchase.purchaseTitle=""
+                        _this.purchase.productName=""
+                        _this.purchase.originRequirements="请选择"
+                        _this.purchase.specificationType="请选择"
+                        _this.purchase.level="请选择"
+                        _this.purchase.warehouse=""
+                        _this.purchase.purchaseSport="请选择"
+                        _this.purchase.purchasePrice=""
+                        _this.purchase.procurementNotes=""
+                        _this.purchase.paymentMethod="请选择"
+                        _this.purchase.invoiceType="普通发票"
+                        _this.purchase.receivingAddress=""
+                        _this.purchase.procurementDeadline= ""
+                        _this.purchase.contactPeople=""
+                        _this.purchase.companyName=""
+                        _this.purchase.phone=""
+                    }
                 })
             },
             dateToString: function(now) {
