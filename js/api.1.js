@@ -59,6 +59,10 @@ function searchCommoditys(commodity){
 function findAllResources(){
     return axios.get("/web-service/findAllResources");
 }
+//查询所有采购信息
+function findAllPurchases(){
+    return axios.get("/web-service/findAllPurchases");
+}
 
 //根据手机获取用户信息
 function getUserByPhone(params){
