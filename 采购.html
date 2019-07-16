@@ -75,7 +75,7 @@
         <div class="container">
             <!-- 面包屑导航 -->
             <div class="bread-crumbs">
-                <a href="javascript:;">首页</a>
+                <a href="index.html">首页</a>
                 <span><i class="fa fa-angle-double-right"></i></span>
                 <a href="javascript:;" class="selected">全部采购</a>
             </div>
@@ -118,13 +118,13 @@
                                             <p style="width:130px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">{{purchase.procurementDeadline}}</p>
                                         </div>
                                     </dd>
-                                   
+
                                 </dl>
                                 <!-- page -->
                                 <div class="list-page">
                                     <ul>
                                         <li><a href="javascript:;" class="prev-listPage prev-disable">上一页</a></li>
-                                        <li><a href="javascript:;" id="hover-listPage">1</a></li>
+                                        <li><a href="javascript:;" id="hover-listPage_all">1</a></li>
                                         <li><a href="javascript:;">2</a></li>
                                         <li><a href="javascript:;">3</a></li>
                                         <li><a href="javascript:;">4</a></li>
@@ -366,7 +366,7 @@
                                 <div class="list-page">
                                     <ul>
                                         <li><a href="javascript:;" class="prev-listPage prev-disable">上一页</a></li>
-                                        <li><a href="javascript:;" id="hover-listPage">1</a></li>
+                                        <li><a href="javascript:;" id="hover-listPage_start">1</a></li>
                                         <li><a href="javascript:;">2</a></li>
                                         <li><a href="javascript:;">3</a></li>
                                         <li><a href="javascript:;">4</a></li>
@@ -805,7 +805,7 @@
                 localStorage.setItem("purchaseId",id);
                 location.href="采购-采购单详情页.html"
             }
-            
+
         },
         created() {
             findAllPurchases().then(res =>{
