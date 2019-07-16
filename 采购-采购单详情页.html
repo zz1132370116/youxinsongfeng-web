@@ -90,33 +90,33 @@
                 </div>
                 <div class="proof">
                     <div class="member-column">
-                        <div class="member-detailtit">我想要采购2吨进口的鸡翅</div>
+                        <div class="member-detailtit">{{purchase.purchaseTitle}}</div>
                         <div class="detail-con">
                             <dl>
                                 <dt>产品：</dt>
-                                <dd>鸡翅</dd>
+                                <dd>{{purchase.productName}}</dd>
                                 <dt>产地要求：</dt>
-                                <dd>澳洲、美洲、国内</dd>
+                                <dd>{{purchase.originRequirements}}</dd>
                                 <dt>规格型号：</dt>
-                                <dd>180g、200g、500g</dd>
+                                <dd>{{purchase.specificationType}}</dd>
                                 <dt>级别要求：</dt>
-                                <dd>B类以上</dd>
+                                <dd>{{purchase.level}}</dd>
                                 <dt>仓库要求：</dt>
-                                <dd>国内仓库即可</dd>
+                                <dd>{{purchase.warehouse}}</dd>
                                 <dt>期/现货：</dt>
-                                <dd>现货</dd>
+                                <dd>{{purchase.purchaseSport}}</dd>
                                 <dt>价格要求：</dt>
-                                <dd>低于110元/千克</dd>
+                                <dd>{{purchase.purchasePrice}}</dd>
                                 <dt>采购说明：</dt>
-                                <dd>说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容</dd>
+                                <dd>{{purchase.procurementNotes}}</dd>
                                 <dt>付款方式：</dt>
-                                <dd>预付订金30%</dd>
+                                <dd>{{purchase.paymentMethod}}</dd>
                                 <dt>发票类型：</dt>
-                                <dd>增值税发票</dd>
+                                <dd>{{purchase.invoiceType}}</dd>
                                 <dt>收货地址：</dt>
-                                <dd>广东省 深圳市 龙岗区 XXX工业园</dd>
+                                <dd>{{purchase.receivingAddress}}</dd>
                                 <dt>采购截止时间：</dt>
-                                <dd>2015-07-01</dd>
+                                <dd>{{purchase.procurementDeadline}}</dd>
                             </dl>
                         </div>
                     </div>
@@ -133,14 +133,14 @@
                                 </div>
                                 <dl>
                                     <dt>联系人：</dt>
-                                    <dd><p>张**</p></dd>
+                                    <dd><p>{{purchase.contactPeople}}</p></dd>
                                     <dt>公司名称：</dt>
                                     <dd>
-                                        <p>深圳*******有限公司</p>
+                                        <p>{{purchase.companyName}}</p>
                                     </dd>
                                     <dt>手机号：</dt>
                                     <dd>
-                                        <p>138****5678</p>
+                                        <p>{{purchase.phone}}</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -203,8 +203,8 @@
                                     <th>备注</th>
                                     <th style="width:90px; text-align: center;">操作</th>
                                 </tr>
-                                </thead>
-                                <tbody>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>--</td>
                                     <td>--</td>
@@ -219,13 +219,13 @@
                                     <td>--</td>
                                     <td><a class="btn04 w80" href="javascript:;">加入报价单</a></td>
                                 </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="method-table">
-                            <h6>生成报价单：</h6>
-                            <table>
-                                <thead>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="method-table">
+                        <h6>生成报价单：</h6>
+                        <table>
+                            <thead>
                                 <tr>
                                     <th width="90px;">分类</th>
                                     <th>产品名称</th>
@@ -240,8 +240,8 @@
                                     <th>备注</th>
                                     <th style="width:90px; text-align: center;">操作</th>
                                 </tr>
-                                </thead>
-                                <tbody>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>牛腩肉</td>
                                     <td>冻牛肉</td>
@@ -351,20 +351,128 @@
 </body>
 </html>
 
+                            </tbody>
+                        </table>
+                        <a href="javascript:;" class="btn09">增加</a>
+                    </div>
+                    <!-- 加入资源单 结束 -->
+                    <div class="member-right">
+                        <div class="controls">
+                            <p>地址：</p>
+                           <select class="w125">
+                                <option value="0">请选择</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <select class="w125">
+                                <option value="0">请选择</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <p>联系手机：</p>
+                            <input type="text" class="input03 w320">
+                        </div>
+                        <input type="text" class="btn01 submit w155" value="提交报价">
+                        <!-- 不是供应商 -->
+                        <div class="no-gys">
+                            <div class="no-tit"><i class="fa fa-exclamation-circle"></i>您还不是供应商，优质供应商才能参与报价</div>
+                            <div class="no-btns">
+                                <a href="javascript:;" class="btn01">成为供应商</a>
+                                <a href="javascript:;" class="btn02">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--网站底部-->
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-left">
+                <div class="footer-logo"><img src="images/logo.png" alt=""/></div>
+                <div class="footer-tel">
+                    <h6>服务热线：</h6>
+                    <p>400-888-8888</p>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <dl style="background: url(images/footer-icon01.png) no-repeat top left;">
+                    <dt><a href="javascript:;">购物指南</a></dt>
+                    <dd><a href="">购物流程</a><a href="">订货方式</a><a href="">联系客服</a><a href="">交易条款</a></dd>
+                </dl>
+                <dl style="background: url(images/footer-icon02.png) no-repeat top left;">
+                    <dt><a href="javascript:;">支付方式</a></dt>
+                    <dd><a href="">银行付款</a><a href="">在线支付</a><a href="">组合支付</a></dd>
+                </dl>
+                <dl style="background: url(images/footer-icon03.png) no-repeat top left;">
+                    <dt><a href="javascript:;">物流帮助</a></dt>
+                    <dd><a href="">如何找车</a><a href="">常见问题</a><a href="">运送流程</a></dd>
+                </dl>
+                <dl style="background: url(images/footer-icon04.png) no-repeat top left;">
+                    <dt><a href="javascript:;">售后服务</a></dt>
+                    <dd><a href="">售后服务总则</a><a href="">服务政策</a></dd>
+                </dl>
+                <dl style="background: url(images/footer-icon05.png) no-repeat top left;">
+                    <dt><a href="javascript:;">帮助中心</a></dt>
+                    <dd><a href="">网点分布</a><a href="">加盟商区</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="copy">
+        <div class="copy-nav">
+            <a href="javascript:;">关于我们</a>
+            <span>|</span>
+            <a href="javascript:;">法律声明</a>
+            <span>|</span>
+            <a href="javascript:;">诚聘英才</a>
+            <span>|</span>
+            <a href="javascript:;">联系我们</a>
+            <span>|</span>
+            <a href="javascript:;">友情链接</a>
+        </div>
+        <p>Copyright <i class="fa fa-copyright"></i> 超鲜网 粤ICP备 13013915号-3  ICP证：粤B2-201401448</p>
+    </div>
+</footer>
+
+</body>
+</html>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/jquery.accordion.js"></script>
 <script type="text/javascript" src="js/jquery.selectBox.js"></script>
-
 <script src="js/axios-0.18.0.js"></script>
 <script src="js/vuejs-2.5.16.js"></script>
 <script src="components/top.js"></script>
 <script src="components/top-right.js"></script>
 <script src="components/classifications.js"></script>
 <script src="js/api.1.js"></script>
-
 <script>
     new Vue({
-        el: "#app"
+       
+        el:"#app",
+        data:{
+            purchase:{
+                purchaseId:""
+            }
+        },
+        methods:{
+
+        },
+        created(){
+            this.purchase.purchaseId =localStorage.getItem("purchaseId");
+
+            findPurchasesByid(this.purchase).then(res=>{
+                this.purchase =res.data.data.data;
+                console.log(this.purchase)
+            })
+        }
     })
 </script>
