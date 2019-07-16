@@ -2750,7 +2750,6 @@
     </ul>
 </div>
 
-
 </body>
 </html>
 
@@ -2773,18 +2772,16 @@
 <script>
     new Vue({
         el: "#app",
-        data:{
-            classifications:[{
-                classification:[]
+        data: {
+            classifications: [{
+                classification: []
             }
 
             ],
         },
-        methods:{
-
-        },
-        created:function(){
-            findClassifications().then(res =>{
+        methods: {},
+        created: function () {
+            findClassifications().then(res => {
                 console.log(res.data.data.data)
                 this.classifications = res.data.data.data;
             })
