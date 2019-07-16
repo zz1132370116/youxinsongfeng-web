@@ -90,33 +90,33 @@
                 </div>
                 <div class="proof">
                     <div class="member-column">
-                        <div class="member-detailtit">我想要采购2吨进口的鸡翅</div>
+                        <div class="member-detailtit">{{purchase.purchaseTitle}}</div>
                         <div class="detail-con">
                             <dl>
                                 <dt>产品：</dt>
-                                <dd>鸡翅</dd>
+                                <dd>{{purchase.productName}}</dd>
                                 <dt>产地要求：</dt>
-                                <dd>澳洲、美洲、国内</dd>
+                                <dd>{{purchase.originRequirements}}</dd>
                                 <dt>规格型号：</dt>
-                                <dd>180g、200g、500g</dd>
+                                <dd>{{purchase.specificationType}}</dd>
                                 <dt>级别要求：</dt>
-                                <dd>B类以上</dd>
+                                <dd>{{purchase.level}}</dd>
                                 <dt>仓库要求：</dt>
-                                <dd>国内仓库即可</dd>
+                                <dd>{{purchase.warehouse}}</dd>
                                 <dt>期/现货：</dt>
-                                <dd>现货</dd>
+                                <dd>{{purchase.purchaseSport}}</dd>
                                 <dt>价格要求：</dt>
-                                <dd>低于110元/千克</dd>
+                                <dd>{{purchase.purchasePrice}}</dd>
                                 <dt>采购说明：</dt>
-                                <dd>说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容说明内容</dd>
+                                <dd>{{purchase.procurementNotes}}</dd>
                                 <dt>付款方式：</dt>
-                                <dd>预付订金30%</dd>
+                                <dd>{{purchase.paymentMethod}}</dd>
                                 <dt>发票类型：</dt>
-                                <dd>增值税发票</dd>
+                                <dd>{{purchase.invoiceType}}</dd>
                                 <dt>收货地址：</dt>
-                                <dd>广东省 深圳市 龙岗区 XXX工业园</dd>
+                                <dd>{{purchase.receivingAddress}}</dd>
                                 <dt>采购截止时间：</dt>
-                                <dd>2015-07-01</dd>
+                                <dd>{{purchase.procurementDeadline}}</dd>
                             </dl>
                         </div>
                     </div>
@@ -133,14 +133,14 @@
                                 </div>
                                 <dl>
                                     <dt>联系人：</dt>
-                                    <dd><p>张**</p></dd>
+                                    <dd><p>{{purchase.contactPeople}}</p></dd>
                                     <dt>公司名称：</dt>
                                     <dd>
-                                        <p>深圳*******有限公司</p>
+                                        <p>{{purchase.companyName}}</p>
                                     </dd>
                                     <dt>手机号：</dt>
                                     <dd>
-                                        <p>138****5678</p>
+                                        <p>{{purchase.phone}}</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -455,7 +455,8 @@
 <script src="components/classifications.js"></script>
 <script src="js/api.1.js"></script>
 <script>
-    new Vue(){
+    new Vue({
+       
         el:"#app",
         data:{
             purchase:{
@@ -465,11 +466,13 @@
         methods:{
 
         },
-        created() {
-            this.purchaseId =localStorage.getItem("purchaseId");
-            findPurchasesByid(this.purchaseId).then(res=>{
+        created(){
+            this.purchase.purchaseId =localStorage.getItem("purchaseId");
 
+            findPurchasesByid(this.purchase).then(res=>{
+                this.purchase =res.data.data.data;
+                console.log(this.purchase)
             })
-        },
-    }
+        }
+    })
 </script>
