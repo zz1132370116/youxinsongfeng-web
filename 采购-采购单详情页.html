@@ -264,7 +264,7 @@
                             </div>
                             <div class="controls">
                                 <p>联系手机：</p>
-                                <input type="text" v-model="quotation.phone" class="input03 w320">
+                                <input type="text" v-model="phone" class="input03 w320">
                             </div>
                             <input type="text" class="btn01 submit w155" value="提交报价" @click="commit">
                             <!-- 不是供应商 -->
@@ -359,6 +359,7 @@
                 phone:"",
 
             },
+            phone:"",
             state:false, //状态
 
             commodity:{},
@@ -378,6 +379,7 @@
                 }else{
                     this.quotation.quotationId = null;
                     //提交
+                    this.quotation.phone =this.phone ;
                     saveQuotation(this.quotation).then(res => {
                         console.log(res.data.data)
                         alert("条件报价单成功")
@@ -392,7 +394,7 @@
                     //提交
                     console.log(this.warehouseSearch)
                     searchQuotation(this.warehouseSearch).then(res => {
-                        this.quotations = res.data.data.data;
+                        this.warehouses = res.data.data.data;
                     })
                 }
             },
