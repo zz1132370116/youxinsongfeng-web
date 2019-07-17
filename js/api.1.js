@@ -93,9 +93,14 @@ function uploadImage(params,config) {
     return axios.post("/web-service/uploadImage",params,config);
 }
 
-//
+//发布资源单
 function releasePurchase(params) {
     return axios.post("/web-service/releasePurchase",params);
+}
+
+//采购页面的右侧热门采购清单
+function findSortPurchases() {
+    return axios.get("/web-service/findSortPurchases");
 }
 
 // //商品分类
