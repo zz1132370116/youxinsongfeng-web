@@ -154,7 +154,7 @@
                         <div class="member-right">
                             <div class="controls">
                                 <p>报价人：</p>
-                                <input type="text" class="input03 w320">
+                                <input type="text" v-model="quotation.quotePeople" class="input03 w320">
                             </div>
                         </div>
                         <div class="member-detailtit">选择商品：</div>
@@ -162,17 +162,22 @@
                         <div class="search-member">
                             <dl>
                                 <dd>
-
-                                    <label for="">
+                                    <label>
                                         <p>产品名称：</p>
-                                        <input type="text" class="input02 w125" />
+                                        <input type="text" v-model="warehouseSearch.productName" class="input02 w125"/>
                                     </label>
-                                    <label for="">
+                                    <label>
                                         <p>产品规格：</p>
-                                        <input type="text" class="input02 w125"/>
+                                        <select v-model="warehouseSearch.specificationType" class="w125">
+                                            <option value="80g">80g</option>
+                                            <option value="100g">100g</option>
+                                            <option value="120g">120g</option>
+                                            <option value="150g">150g</option>
+                                            <option value="180g">180g</option>
+                                        </select>
                                     </label>
                                     <div class="search-btn">
-                                        <input type="submit" class="btn03" value="检索" @@click="search()">
+                                        <input type="submit" class="btn03" value="检索" @click="search()">
                                     </div>
                                 </dd>
                             </dl>
@@ -195,83 +200,71 @@
                                     <th>备注</th>
                                     <th style="width:90px; text-align: center;">操作</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td><a class="btn04 w80" href="javascript:;">加入报价单</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="method-table">
-                        <h6>生成报价单：</h6>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th width="90px;">分类</th>
-                                    <th>产品名称</th>
-                                    <th>产地</th>
-                                    <th>规格型号</th>
-                                    <th>级别</th>
-                                    <th>数量(KG)</th>
-                                    <th>单价</th>
-                                    <th width="90px;">货币</th>
-                                    <th width="90px;">期/现货</th>
-                                    <th>仓库</th>
-                                    <th>备注</th>
-                                    <th style="width:90px; text-align: center;">操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>牛腩肉</td>
-                                    <td>冻牛肉</td>
-                                    <td>澳洲</td>
-                                    <td>180g</td>
-                                    <td>A</td>
-                                    <td>10000</td>
-                                    <td><input type="text" class="input05" value="90"></td>
-                                    <td>RMB</td>
-                                    <td>现货</td>
-                                    <td>惠州</td>
-                                    <td>备注信息</td>
-                                    <td><a class="btn04 w80" href="javascript:;">删除</a></td>
+                                </thead>
+                                <tbody>
+                                <tr v-for="warehouse in warehouses">
+                                    <td>{{warehouse.classificationName}}</td>
+                                    <td>{{warehouse.productName}}</td>
+                                    <td>{{warehouse.place}}</td>
+                                    <td>{{warehouse.specificationType}}</td>
+                                    <td>{{warehouse.level}}</td>
+                                    <td>{{warehouse.quantity}}</td>
+                                    <td>{{warehouse.price}}</td>
+                                    <td>{{warehouse.currency}}</td>
+                                    <td>{{warehouse.sport}}</td>
+                                    <td>{{warehouse.warehouse}}</td>
+                                    <td>{{warehouse.remarks}}</td>
+                                    <td><a class="btn04 w80" href="javascript:;" @click="addQuotation(warehouse)">加入报价单</a></td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <a href="javascript:;" class="btn09">增加</a>
+                        </div>
+                        <div class="method-table">
+                            <h6>生成报价单：</h6>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="90px;">分类</th>
+                                        <th>产品名称</th>
+                                        <th>产地</th>
+                                        <th>规格型号</th>
+                                        <th>级别</th>
+                                        <th>数量(KG)</th>
+                                        <th>单价</th>
+                                        <th width="90px;">货币</th>
+                                        <th width="90px;">期/现货</th>
+                                        <th>仓库</th>
+                                        <th>备注</th>
+                                        <th style="width:90px; text-align: center;">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{quotation.classificationName}}</td>
+                                        <td>{{quotation.productName}}</td>
+                                        <td>{{quotation.place}}</td>
+                                        <td>{{quotation.specificationType}}</td>
+                                        <td>{{quotation.level}}</td>
+                                        <td>{{quotation.quantity}}</td>
+                                        <td><input type="text" class="input05" v-model="quotation.price"></td>
+                                        <td>{{quotation.currency}}</td>
+                                        <td>{{quotation.sport}}</td>
+                                        <td>{{quotation.warehouse}}</td>
+                                        <td>{{quotation.remarks}}</td>
+                                        <td><a class="btn04 w80" href="javascript:;" @click="removeQuotation()">删除</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <!-- 加入资源单 结束 -->
                         <div class="member-right">
                             <div class="controls">
                                 <p>地址：</p>
-                                <select class="w125">
-                                    <option value="0">请选择</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <select class="w125">
-                                    <option value="0">请选择</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <input type="text" v-model="quotation.address" class="input03 w320">
                             </div>
                             <div class="controls">
                                 <p>联系手机：</p>
-                                <input type="text" class="input03 w320">
+                                <input type="text" v-model="quotation.phone" class="input03 w320">
                             </div>
                             <input type="text" class="btn01 submit w155" value="提交报价" @click="commit">
                             <!-- 不是供应商 -->
@@ -335,19 +328,19 @@
                 <span>|</span>
                 <a href="javascript:;">友情链接</a>
             </div>
-            <p>Copyright <i class="fa fa-copyright"></i> 超鲜网 粤ICP备 13013915号-3  ICP证：粤B2-201401448</p>
+            <p>Copyright <i class="fa fa-copyright"></i> 超鲜网 粤ICP备 13013915号-3 ICP证：粤B2-201401448</p>
         </div>
     </footer>
 </div>
 
 </body>
-
 </html>
+
 
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/jquery.accordion.js"></script>
-<script type="text/javascript" src="js/jquery.selectBox.js"></script>
+<!--<script type="text/javascript" src="js/jquery.selectBox.js"></script>-->
 <script src="js/axios-0.18.0.js"></script>
 <script src="js/vuejs-2.5.16.js"></script>
 <script src="components/top.js"></script>
@@ -366,7 +359,16 @@
                 phone:"",
 
             },
-            state:false //状态
+            state:false, //状态
+
+            commodity:{},
+            warehouseSearch:{
+                productName:"",
+                specificationType:"",
+                phone: localStorage.getItem("phone")
+            },
+            warehouses:[],   //仓库里面的商品
+            quotation:{}     //新生成的报价单
         },
         methods:{
             //提交
@@ -374,7 +376,12 @@
                 if(this.state == false){
                     alert("您还不是供应商,请前往升级")
                 }else{
+                    this.quotation.quotationId = null;
                     //提交
+                    saveQuotation(this.quotation).then(res => {
+                        console.log(res.data.data)
+                        alert("条件报价单成功")
+                    })
                 }
             },
             //检索
@@ -383,7 +390,17 @@
                     alert("您还不是供应商,请前往升级")
                 } else {
                     //提交
+                    console.log(this.warehouseSearch)
+                    searchQuotation(this.warehouseSearch).then(res => {
+                        this.quotations = res.data.data.data;
+                    })
                 }
+            },
+            addQuotation: function (item) {
+                this.quotation = item;
+            },
+            removeQuotation: function () {
+                this.quotation = {}
             }
         },
         created() {
