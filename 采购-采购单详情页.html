@@ -154,7 +154,7 @@
                         <div class="member-right">
                             <div class="controls">
                                 <p>报价人：</p>
-                                <input type="text" class="input03 w320">
+                                <input type="text" v-model="quotation.quotePeople" class="input03 w320">
                             </div>
                         </div>
                         <div class="member-detailtit">选择商品：</div>
@@ -164,14 +164,20 @@
                                 <dd>
                                     <label>
                                         <p>产品名称：</p>
-                                        <input type="text" v-model="quotation.productName" class="input02 w125"/>
+                                        <input type="text" v-model="warehouseSearch.productName" class="input02 w125"/>
                                     </label>
                                     <label>
                                         <p>产品规格：</p>
-                                        <input type="text" v-model="quotation.specificationType" class="input02 w125"/>
+                                        <select v-model="warehouseSearch.specificationType" class="w125">
+                                            <option value="80g">80g</option>
+                                            <option value="100g">100g</option>
+                                            <option value="120g">120g</option>
+                                            <option value="150g">150g</option>
+                                            <option value="180g">180g</option>
+                                        </select>
                                     </label>
                                     <div class="search-btn">
-                                        <input type="submit" @click="searchQuotation()" class="btn03" value="检索">
+                                        <input type="submit" class="btn03" value="检索" @click="search()">
                                     </div>
                                 </dd>
                             </dl>
@@ -196,19 +202,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td><a class="btn04 w80" href="javascript:;">加入报价单</a></td>
+                                <tr v-for="warehouse in warehouses">
+                                    <td>{{warehouse.classificationName}}</td>
+                                    <td>{{warehouse.productName}}</td>
+                                    <td>{{warehouse.place}}</td>
+                                    <td>{{warehouse.specificationType}}</td>
+                                    <td>{{warehouse.level}}</td>
+                                    <td>{{warehouse.quantity}}</td>
+                                    <td>{{warehouse.price}}</td>
+                                    <td>{{warehouse.currency}}</td>
+                                    <td>{{warehouse.sport}}</td>
+                                    <td>{{warehouse.warehouse}}</td>
+                                    <td>{{warehouse.remarks}}</td>
+                                    <td><a class="btn04 w80" href="javascript:;" @click="addQuotation(warehouse)">加入报价单</a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -234,47 +240,35 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>牛腩肉</td>
-                                        <td>冻牛肉</td>
-                                        <td>澳洲</td>
-                                        <td>180g</td>
-                                        <td>A</td>
-                                        <td>10000</td>
-                                        <td><input type="text" class="input05" value="90"></td>
-                                        <td>RMB</td>
-                                        <td>现货</td>
-                                        <td>惠州</td>
-                                        <td>备注信息</td>
-                                        <td><a class="btn04 w80" href="javascript:;">删除</a></td>
+                                        <td>{{quotation.classificationName}}</td>
+                                        <td>{{quotation.productName}}</td>
+                                        <td>{{quotation.place}}</td>
+                                        <td>{{quotation.specificationType}}</td>
+                                        <td>{{quotation.level}}</td>
+                                        <td>{{quotation.quantity}}</td>
+                                        <td><input type="text" class="input05" v-model="quotation.price"></td>
+                                        <td>{{quotation.currency}}</td>
+                                        <td>{{quotation.sport}}</td>
+                                        <td>{{quotation.warehouse}}</td>
+                                        <td>{{quotation.remarks}}</td>
+                                        <td><a class="btn04 w80" href="javascript:;" @click="removeQuotation()">删除</a></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="javascript:;" class="btn09">增加</a>
                         </div>
                         <!-- 加入资源单 结束 -->
                         <div class="member-right">
                             <div class="controls">
                                 <p>地址：</p>
-                                <select class="w125">
-                                    <option value="0">请选择</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <select class="w125">
-                                    <option value="0">请选择</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <input type="text" v-model="quotation.address" class="input03 w320">
                             </div>
                             <div class="controls">
                                 <p>联系手机：</p>
-                                <input type="text" class="input03 w320">
+                                <input type="text" v-model="quotation.phone" class="input03 w320">
                             </div>
-                            <input type="text" class="btn01 submit w155" value="提交报价">
+                            <input type="text" class="btn01 submit w155" value="提交报价" @click="commit">
                             <!-- 不是供应商 -->
-                            <div class="no-gys">
+                            <div class="no-gys"  v-if="this.state != true ">
                                 <div class="no-tit"><i class="fa fa-exclamation-circle"></i>您还不是供应商，优质供应商才能参与报价</div>
                                 <div class="no-btns">
                                     <a href="javascript:;" class="btn01">成为供应商</a>
@@ -355,25 +349,58 @@
 <script src="js/api.1.js"></script>
 <script>
     new Vue({
-
-        el: "#app",
-        data: {
-            purchase: {
-                purchaseId: ""
+       
+        el:"#app",
+        data:{
+            purchase:{
+                purchaseId:""
             },
+            user:{
+                phone:"",
+
+            },
+            state:false, //状态
+
             commodity:{},
-            quotation:{
+            warehouseSearch:{
                 productName:"",
                 specificationType:"",
                 phone: localStorage.getItem("phone")
             },
-            quotations:[]
+            warehouses:[],   //仓库里面的商品
+            quotation:{}     //新生成的报价单
         },
-        methods: {
-            searchQuotation:function () {
-                searchQuotation(this.quotation).then(res => {
-                    this.quotations = res.data.data.data;
-                })
+        methods:{
+            //提交
+            commit:function(){
+                if(this.state == false){
+                    alert("您还不是供应商,请前往升级")
+                }else{
+                    this.quotation.quotationId = null;
+                    //提交
+                    saveQuotation(this.quotation).then(res => {
+                        console.log(res.data.data)
+                        alert("条件报价单成功")
+                    })
+                }
+            },
+            //检索
+            search:function(){
+                if(this.state == false){
+                    alert("您还不是供应商,请前往升级")
+                }else{
+                    //提交
+                    console.log(this.warehouseSearch)
+                    searchQuotation(this.warehouseSearch).then(res => {
+                        this.quotations = res.data.data.data;
+                    })
+                }
+            },
+            addQuotation: function (item) {
+                this.quotation = item;
+            },
+            removeQuotation: function () {
+                this.quotation = {}
             }
         },
         created() {
@@ -382,6 +409,13 @@
             findPurchasesByid(this.purchase).then(res => {
                 this.purchase = res.data.data.data;
                 console.log(this.purchase)
+            });
+            //获取用户
+            this.user.phone = localStorage.getItem("phone")
+            getUserByPhone(this.user).then(res =>{
+                if(res.data.data.data.state = "1"){
+                    this.state =true
+                }
             })
         }
     })

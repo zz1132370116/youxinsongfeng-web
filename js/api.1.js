@@ -103,6 +103,16 @@ function findSortPurchases() {
     return axios.get("/web-service/findSortPurchases");
 }
 
+//查询自已的报价单
+function searchQuotation(params) {
+    return axios.post("/web-service/searchQuotation",params);
+}
+
+//提交报价单
+function saveQuotation(params) {
+    return axios.post("/web-service/saveQuitation",params);
+}
+
 // //商品分类
 // function getCategorys(){
 //     return axios.get("/web-service/categorys");
