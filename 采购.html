@@ -260,7 +260,7 @@
                                         <dd v-for="purchase in purchaselist2">
                                             <i class="fa fa-comment"></i>
                                             <div class="tit">
-                                                <a href="javascript:;" class="otw">{{purchase.purchaseTitle}}</a>
+                                                <a href="javascript:;" class="otw"  @Click.prevent="findPurchasesByid(purchase.purchaseId)">{{purchase.purchaseTitle}}</a>
                                                 <span class="goOn">【进行中】</span>
                                             </div>
                                             <div class="user">lrxl***&nbsp;&nbsp;&nbsp;于{{purchase.procurementDeadline}}
@@ -408,7 +408,7 @@
                                         <dd v-for="purchase in purchaselist3">
                                             <i class="fa fa-comment"></i>
                                             <div class="tit">
-                                                <a href="javascript:;" class="otw">{{purchase.purchaseTitle}}</a>
+                                                <a href="javascript:;" class="otw"  @Click.prevent="findPurchasesByid(purchase.purchaseId)">{{purchase.purchaseTitle}}</a>
                                                 <span class="goOn">【已结束】</span>
                                             </div>
                                             <div class="user">lrxl***&nbsp;&nbsp;&nbsp;于{{purchase.procurementDeadline}}
