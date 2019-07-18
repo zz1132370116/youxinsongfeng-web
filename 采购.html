@@ -291,6 +291,7 @@
                                     <div class="list-page">
                                         <ul>
                                             <li v-if="endcur>1"><a v-on:click="endcur--,pageClick()">上一页</a></li>
+
                                             <li v-if="endcur==1"><a class="banclick">上一页</a></li>
                                             <!--当前页背景色为蓝色-->
                                             <li v-for="index in indexs" v-bind:class="{ 'active': endcur == index}">
@@ -418,7 +419,7 @@
             curr: 1,//进行中
             alll: 5, //进行中
             endcur: 1, //结束
-            endall: 5,//结束
+            endall: 1,//结束
             sortPurchaselist: [],  //右侧的热门采购清单
 
         },
@@ -436,7 +437,7 @@
             //通过状态查询进行
             findBystate: function (curr) {
                 findBystate(this.curr).then(res => {
-                    this.endall = res.data.data.pagesize;
+                    this.alll = res.data.data.pagesize;
                     this.purchaselist2 = res.data.data.data;
                 })
             },
