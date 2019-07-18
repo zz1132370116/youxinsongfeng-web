@@ -87,6 +87,14 @@ function getUserByPhone(params){
 function changeUserInfo(params) {
     return axios.post("/web-service/changeUserInfo",params);
 }
+//绑定账户时获取验证码
+function sendSms3(params){
+    return axios.post("/web-service/sms3",params);
+}
+//保存银行账户信息
+function saveBank(params){
+    return axios.post("/web-service/saveBank",params);
+}
 
 //上传头像
 function uploadImage(params,config) {
