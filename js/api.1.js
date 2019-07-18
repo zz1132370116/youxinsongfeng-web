@@ -113,6 +113,11 @@ function saveQuotation(params) {
     return axios.post("/web-service/saveQuitation",params);
 }
 
+//
+function findCommoditityById(params) {
+    return axios.post("/web-service/findCommoditityById",params);
+}
+
 // //商品分类
 // function getCategorys(){
 //     return axios.get("/web-service/categorys");

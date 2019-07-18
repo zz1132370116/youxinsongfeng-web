@@ -249,7 +249,7 @@
                                 <td>{{commodity.commoditySport}}</td>
 <!--                                <td>{{commodity.companys[0].companyName}}</td>-->
                                 <td>
-                                    <a class="btn04" href="javascript:;">查看详情</a>
+                                    <a class="btn04" href="javascript:;" @click="showCommodityDetail(commodity.commodityId)">查看详情</a>
                                     <a class="btn04" href="javascript:;">加入购物车</a>
                                     <a class="btn04" href="javascript:;">收藏</a>
                                 </td>
@@ -467,6 +467,11 @@
                         }
                     }
                 }
+            },
+            //展示商品的详情
+            showCommodityDetail: function (commodityId) {
+                localStorage.setItem("commodityId",commodityId);
+                window.location.href = "商品分类-详情页.html"
             }
         },
         created: function () {
