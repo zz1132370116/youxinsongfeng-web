@@ -213,7 +213,7 @@
                                             <li v-if="curr>1"><a v-on:click="curr--,pageClick2()">上一页</a></li>
                                             <li v-if="curr==1"><a class="banclick">上一页</a></li>
                                             <!--当前页背景色为蓝色-->
-                                            <li v-for="index in indexs" v-bind:class="{ 'active': curr == index}">
+                                            <li v-for="index in indexs2" v-bind:class="{ 'active': curr == index}">
                                                 <a v-on:click="btnClick2(index)">{{ index }}</a>
                                             </li>
                                             <li v-if="curr<alll"><a v-on:click="curr++,pageClick2()">下一页</a></li>
@@ -294,7 +294,7 @@
 
                                             <li v-if="endcur==1"><a class="banclick">上一页</a></li>
                                             <!--当前页背景色为蓝色-->
-                                            <li v-for="index in indexs" v-bind:class="{ 'active': endcur == index}">
+                                            <li v-for="index in indexs3" v-bind:class="{ 'active': endcur == index}">
                                                 <a v-on:click="btnClick3(index)">{{ index }}</a>
                                             </li>
                                             <li v-if="endcur<endall"><a v-on:click="endcur++,pageClick()">下一页</a></li>
@@ -521,6 +521,60 @@
                         } else {
                             right = this.all
                             left = this.all - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                console.log(ar);
+                return ar
+            },
+            indexs3: function () {
+                var left = 1;
+                var right = this.endall;
+                var ar = [];
+                if (this.endall >= 5) {
+                    //这里最大范围从3到6，如果到达7，那么下边加2变成9，已经超过最大的范围值
+                    if (this.endcur > 3 && this.endcur < this.endall - 1) {
+                        //以4为参考基准，左面加2右边加2
+                        left = this.endcur - 2
+                        right = this.endcur + 2
+                    } else {
+                        if (this.endcur <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.endall
+                            left = this.endall - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                console.log(ar);
+                return ar
+            },
+            indexs2: function () {
+                var left = 1;
+                var right = this.alll;
+                var ar = [];
+                if (this.alll >= 5) {
+                    //这里最大范围从3到6，如果到达7，那么下边加2变成9，已经超过最大的范围值
+                    if (this.curr > 3 && this.curr < this.alll - 1) {
+                        //以4为参考基准，左面加2右边加2
+                        left = this.curr - 2
+                        right = this.curr + 2
+                    } else {
+                        if (this.curr <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.alll
+                            left = this.alll - 4
                         }
                     }
                 }
